@@ -1,5 +1,5 @@
 import "./storiesTips.scss";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,8 +11,13 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import {  Input } from 'antd';
 import { Button,  } from 'antd';
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const StoriesTipsGuides = () => {
+
+
+
+
   return (
     <section className="stories-tips-guides">
       <div className="containerr">
@@ -20,14 +25,24 @@ const StoriesTipsGuides = () => {
 
         <div className="stories-sect">
           <Swiper
+              breakpoints={{
+                1366: {
+                  width: 1366,
+                  slidesPerView: 4,
+                },
+                640: {
+                  width: 640,
+                  slidesPerView: 2,
+                },
+              }}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={20}
-            slidesPerView={4}
+            slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
             style={{ padding: "90px 0px 70px 0px" }}
           >
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
                   <div className="hover-scale-image-container">
@@ -57,7 +72,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               {" "}
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
@@ -88,7 +103,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
                   <div className="hover-scale-image-container">
@@ -118,7 +133,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               {" "}
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
@@ -149,7 +164,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
                   <div className="hover-scale-image-container">
@@ -179,7 +194,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               {" "}
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
@@ -210,7 +225,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
                   <div className="hover-scale-image-container">
@@ -240,7 +255,7 @@ const StoriesTipsGuides = () => {
                 </CardActionArea>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide style={{marginRight:"20px",width:"310px"}}>
               {" "}
               <Card sx={{ width: "100%" }} style={{ borderRadius: "15px" }}>
                 <CardActionArea className="card-action-area">
@@ -274,7 +289,7 @@ const StoriesTipsGuides = () => {
           </Swiper>
         </div>
 
-        <div className="special-offer">    
+        {/* <div className="special-offer">    
             <div className="offer-card">
             <div className="offer-img-wrapper">
                 <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2022/06/Rectangle-7-min.png" alt="" />
@@ -287,7 +302,7 @@ const StoriesTipsGuides = () => {
                 <Button  type="primary" shape="round"  className="send-btn"  style={{width:"100px", height:"50px", padding:"10px", fontSize:"18px", fontWeight:"600"}} >Subscribe</Button>
             </div>
             </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

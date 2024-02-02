@@ -1,14 +1,15 @@
 @import "./../../assets/styles/mixin/mixin.scss";
 @import "./../../assets/styles/varibles/varibles.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "./../../assets/styles/gridSystem/grid.scss";
 
 .recomended-section {
   width: 100%;
   padding: 100px 0px;
   background-color: #f7f8fa;
   font-family: "Roboto";
-  .containerr {
-    width: 70%;
+  .container {
+    // width: 70%;
 
     h1 {
       font-size: 36px;
@@ -153,3 +154,38 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 1200px) {
+  .recomended-section{
+    .container{
+  width: 95%;
+    }
+  }
+   }
+
+  //  @media only screen and (max-width: 992px) {
+  //   .recomended-section{
+  //     .containerr{
+  //   width: 70%;
+  //     }
+  //   }
+  //    }
+
+     @media only screen and (max-width: 768px) {
+      .recomended-section{
+        .container{
+      width: 90% !important;
+        }
+      }
+       }
+
+       @media only screen and (max-width: 320px) {
+        .recomended-section{
+          .container{
+       h1{
+        font-size: 27px;
+       }
+          }
+        }
+         }

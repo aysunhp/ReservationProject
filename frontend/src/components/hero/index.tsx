@@ -9,7 +9,7 @@ const Hero = () => {
   const [state, setState] = useState("hotel");
   return (
     <section className="hero-sect">
-      <div className="containerr">
+      <div className="containerr ">
         <h1>Let the journey begin</h1>
         <p>Get the best prices on 2,000,000+ properties, worldwide</p>
         <nav>

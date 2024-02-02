@@ -41,6 +41,49 @@ footer {
         height: 1px;
         background-color: lightgray;
       }
-     
+
+      .copyright-sect{
+        padding-top: 20px;
+@include d-f(space-between,center);
+        .copyright{
+          font-size: 16px;
+          color: #727272;
+          margin: 0px;
+          text-align: left;
+        }
+  
+        .card-img-wrapper{
+          max-width: 280px;
+          height: 30px;
+          overflow: hidden;
+          object-fit: cover;
+        // display: flex;
+        // align-items: flex-end;
+    margin: 0px;
+          img{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+          }
+  
+          
+        }
+       
+      }
+    
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+   footer{
+    .containerr{
+.copyright-sect{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+ flex-direction: column;
+ gap:20px;
+}
+    }
+   }
   }

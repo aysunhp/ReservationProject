@@ -4,7 +4,7 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
-import "./footer.scss"
+import "./footer.scss";
 
 const Footer = () => {
   return (
@@ -59,10 +59,18 @@ const Footer = () => {
             </Grid>
           </Box>
 <div className="line"></div>
-<p className="copyright">
-            Copyright ©2024 All rights reserved | This template is made with heart
-            by Colorlib
-          </p>
+<div className="copyright-sect">
+
+       <p className='copyright'>
+       © Copyright Traveler
+       </p>
+      
+        <div className="card-img-wrapper">
+          <img src="	https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/Frame-3182.svg" alt="" />
+        </div>
+
+    
+</div>
     </div>
     
    </footer>
