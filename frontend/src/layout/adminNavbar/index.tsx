@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const AdminNavbar = (props: Props) => {
+const AdminNavbar = () => {
   return (
     <div>AdminNavbar</div>
   )

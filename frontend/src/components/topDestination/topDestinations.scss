@@ -1,0 +1,68 @@
+@import "./../../assets/styles/mixin/mixin.scss";
+@import "./../../assets/styles/varibles/varibles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.top-destinations{
+    width: 100%;
+    background-color: $basic-color;
+    margin-top: 50px;
+    padding: 100px 0px;
+    font-family: "Roboto";
+    .containerr{
+        width: 70%;
+.offers{
+    margin-bottom: 100px;
+    .img-wrapper{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px ;
+        &:hover img{
+            transform: scale(1.1);
+             overflow: hidden;
+         }
+         &:hover{
+             overflow: hidden;
+         }
+        img{
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+            transition: transform 0.3s linear;
+        }
+        }
+}
+
+.destinations{
+    h2{
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 46px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .img-wrapper{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px ;
+
+        &:hover img{
+           transform: scale(1.1);
+            overflow: hidden;
+        }
+        &:hover{
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+            height: 100%; 
+            border-radius: 10px ;
+          object-fit: cover;
+          transition: transform 0.7s linear;
+        }
+        }
+}
+}
+}

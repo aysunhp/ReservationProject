@@ -1,4 +1,5 @@
-import React from 'react'
+
+import Footer from "../../../layout/footer"
 import Navbar from "../../../layout/navbar"
 import { Outlet } from 'react-router-dom'
 
@@ -7,6 +8,7 @@ const UserRoot = () => {
 <>
 <Navbar/>
 <Outlet/>
+<Footer/>
 </>
   )
 }

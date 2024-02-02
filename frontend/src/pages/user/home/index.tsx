@@ -1,12 +1,15 @@
-import React from 'react'
+import Hero from "../../../components/hero"
+import TopDestinations from "../../../components/topDestination"
+import RecomendedForYou from "../../../components/recomendedForYou"
+import StoriesTipsGuides from "../../../components/storiesTips"
 
-
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <>
-home
+<Hero/>
+<TopDestinations/>
+<RecomendedForYou/>
+<StoriesTipsGuides/>
     </>
   )
 }

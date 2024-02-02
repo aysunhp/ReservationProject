@@ -3,6 +3,8 @@ import Home from "../pages/user/home/index";
 import NoPage from "../pages/noPage";
 import AdminRoot from "../pages/admin/adminRoot";
 import Dashboard from "../pages/admin/dashboard/index";
+import UserSettingsRoot from "../pages/userSettings/userSettingsRoot";
+import UserSettingsDashboard from "../pages/userSettings/dashboard";
 
 export const routes = [
   {
@@ -22,6 +24,16 @@ export const routes = [
       {
         path: "/admin",
         element: <Dashboard />,
+      }
+    ],
+  },
+  {
+    path: "/settings",
+    element: <UserSettingsRoot/>,
+    children: [
+      {
+        path: "/settings",
+        element: <UserSettingsDashboard/>,
       }
     ],
   },

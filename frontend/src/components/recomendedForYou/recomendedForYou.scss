@@ -1,0 +1,155 @@
+@import "./../../assets/styles/mixin/mixin.scss";
+@import "./../../assets/styles/varibles/varibles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.recomended-section {
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #f7f8fa;
+  font-family: "Roboto";
+  .containerr {
+    width: 70%;
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 46px;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    ul {
+      margin-bottom: 50px;
+      @include d-f(center, center);
+      gap: 20px;
+      flex-wrap: wrap;
+      li {
+        padding: 10px 25px;
+        border: 1px solid lightgray;
+        font-size: 16px;
+        background-color: $basic-color;
+        margin: 0px;
+        border-radius: 10px;
+      }
+    }
+
+
+    .recommended-box{
+
+        .card-action-area {
+            overflow: hidden;
+            position: relative;
+          }
+          
+          .hover-scale-image-container {
+            overflow: hidden;
+          }
+          
+          .hover-scale-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 2s ease;
+          
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+
+          .MuiTouchRipple-root.css-8je8zh-MuiTouchRipple-root{
+            display: none;
+          }
+
+.hotel-img-content{
+
+    .wishlist-btn{
+        position: absolute;
+        top: 25px;
+        right: 15px;
+        svg{
+            width: 27px;
+            height: 27px;
+        }
+    }
+.owners-img-wrapper{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    position: absolute;
+    right:7%;
+    margin-top: -35px;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+    .rate{
+        @include d-f(flex-start, center); 
+        gap:10px;
+        svg{
+            margin: 0px;
+            width: 13px;
+            height: 13px;
+        }
+        margin-bottom: 10px;
+    }
+    .name{
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .line{
+        width: 100%;
+        height: 1px;
+        background-color:lightgray;
+        margin-bottom: 20px;
+    }
+    
+    .location{
+        color: rgb(110, 110, 110);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .review-wrapper{
+        margin-bottom: 10px;
+        @include d-f(flex-start, center);  
+        gap:10px;
+        span{
+            margin: 0px;
+            font-weight: 700;
+        }
+        .review{
+            color: rgb(110, 110, 110);
+            font-weight: 400;
+        }
+        div{
+            margin: 0px;
+            border: 2px solid #b8c8fb;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: $base-color;
+        }
+    }
+
+    .price{
+        color: rgb(110, 110, 110);
+        margin-bottom: 10px;
+        span{
+            color: black;
+            font-weight: 700;
+            margin:0px 5px;
+           
+        }
+    }
+}
+
+    }
+  }
+}
