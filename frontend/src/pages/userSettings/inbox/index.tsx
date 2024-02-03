@@ -15,7 +15,9 @@ import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import SettingsIcon from '@mui/icons-material/Settings';
+import CloseIcon from '@mui/icons-material/Close';
 import "./inbox.scss"
+
 import { useNavigate } from 'react-router-dom';
 const drawerWidth = 270;
 
@@ -185,7 +187,39 @@ export default function Inbox(props: Props) {
         <MenuIcon style={{color:"white"}} />
         </IconButton>
         </div>
-<h3>Inbox</h3>
+<p className='page-name'>Inbox</p>
+<div className="inbox-sect">
+  <h3 className='title'>You have <span>1</span> conversations</h3>
+
+  <Box style={{padding:"0px"}}>
+<div className="conversation-item">
+  <div className="remove-btn">
+  <CloseIcon className="btn-svg" style={{color:"black" , fontSize:"16px" ,fontWeight:"bold"}}/>
+  </div>
+  <div className="converstion-img-wrapper">
+    <div className="img-wrapper">
+      <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg" alt="" />
+    </div>
+   
+    <p className="account-name">aysunhp</p>
+  </div>
+  <div className="conversation-content">
+<div className="conversation-content-upper">
+<div className="message-send-type">Send</div>
+ <p>View message details</p>
+</div>
+<div className="converstaion-content-middle">
+  <p >hi</p>
+</div>
+<div className="conversation-content-footer">
+
+    <p>In: <span>Hotel WBF Hommachi</span>,3days ago</p>
+
+</div>
+  </div>
+</div>
+  </Box>
+</div>
       </Box>
     </Box>
   );

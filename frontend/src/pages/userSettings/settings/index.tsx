@@ -185,7 +185,11 @@ navigate("/")
         <MenuIcon style={{color:"white"}} />
         </IconButton>
         </div>
-        <h3>Settings</h3>
+        <p className='page-name'>Settings</p>
+     <div className="setting-sect">
+      
+     </div>
+     
       </Box>
     </Box>
   );
