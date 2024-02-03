@@ -292,38 +292,40 @@ export default function BookingHistory(props: Props) {
             </li>
           </ul>
 <Box style={{padding:"0px"}}>
-<p>No booking history</p>
-<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className='mobile-table-item'>#ID</TableCell>
-            <TableCell align="left" >Title</TableCell>
-            <TableCell align="left" className='mobile-table-item'>Type</TableCell>
-            <TableCell align="left" className='mobile-table-item'>Cost</TableCell>
-            <TableCell align="left">Status</TableCell>
-            <TableCell align="left">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row" className='mobile-table-item'>
-                {row.name}
-              </TableCell>
-              <TableCell align="left">{row.calories}</TableCell>
-              <TableCell align="left" className='mobile-table-item'>{row.fat}</TableCell>
-              <TableCell align="left" className='mobile-table-item'>{row.carbs}</TableCell>
-              <TableCell align="left">{row.protein}</TableCell>
-              <TableCell align="left"><Button variant="contained" style={{fontSize:"13px", padding:"5px 10px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{width:"11px", height:"13px", marginRight:"8px"}}><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill='white'/></svg>Details</Button></TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+
+{
+  state=="all"?<TableContainer component={Paper}>
+  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableHead>
+      <TableRow>
+        <TableCell className='mobile-table-item'>#ID</TableCell>
+        <TableCell align="left" >Title</TableCell>
+        <TableCell align="left" className='mobile-table-item'>Type</TableCell>
+        <TableCell align="left" className='mobile-table-item'>Cost</TableCell>
+        <TableCell align="left">Status</TableCell>
+        <TableCell align="left">Action</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {rows.map((row) => (
+        <TableRow
+          key={row.name}
+          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+        >
+          <TableCell component="th" scope="row" className='mobile-table-item'>
+            {row.name}
+          </TableCell>
+          <TableCell align="left">{row.calories}</TableCell>
+          <TableCell align="left" className='mobile-table-item'>{row.fat}</TableCell>
+          <TableCell align="left" className='mobile-table-item'>{row.carbs}</TableCell>
+          <TableCell align="left">{row.protein}</TableCell>
+          <TableCell align="left"><Button variant="contained" style={{fontSize:"13px", padding:"5px 10px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{width:"11px", height:"13px", marginRight:"8px"}}><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill='white'/></svg>Details</Button></TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>:state==="pending"?<p>No booking history</p>:state==="completed"?<p>No booking history</p>:state==="incomplete"?<p>No booking history</p>:state==="canselled"?<p>No booking history</p>:state==="canselling"?<p>No booking history</p>:null
+}
 </Box>
 </div>
       </Box>
