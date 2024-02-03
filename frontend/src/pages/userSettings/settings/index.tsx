@@ -1,5 +1,22 @@
+import React, { useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Cascader,
+  Checkbox,
+  ColorPicker,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Select,
+  Slider,
+  Switch,
+  TreeSelect,
+  Upload,
+} from 'antd';
 
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -18,7 +35,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import "./settings.scss"
 import { useNavigate } from 'react-router-dom';
 const drawerWidth = 270;
-
+const { TextArea } = Input;
 interface Props {
   window?: () => Window;
 }
@@ -187,7 +204,23 @@ navigate("/")
         </div>
         <p className='page-name'>Settings</p>
      <div className="setting-sect">
-      
+      <div className="personal-info-sect">
+        <p className="personal-info-sect-title">
+          Personal Informations
+        </p>
+<div>
+<Form.Item className="username-inp" label="UserName">
+          <Input />
+        </Form.Item>
+
+        <Form.Item className='email-inp' label="Paypal Email">
+          <Input />
+        </Form.Item>
+</div>
+<div>
+
+</div>
+      </div>
      </div>
      
       </Box>
