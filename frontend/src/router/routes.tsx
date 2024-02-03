@@ -4,7 +4,10 @@ import NoPage from "../pages/noPage";
 import AdminRoot from "../pages/admin/adminRoot";
 import Dashboard from "../pages/admin/dashboard/index";
 import UserSettingsRoot from "../pages/userSettings/userSettingsRoot";
-import UserSettingsDashboard from "../pages/userSettings/dashboard";
+import Settings from "../pages/userSettings/settings";
+import BookingHistory from "../pages/userSettings/bookingHistory";
+import Inbox from "../pages/userSettings/inbox";
+import Wishlist from "../pages/userSettings/wishlist";
 
 export const routes = [
   {
@@ -28,12 +31,23 @@ export const routes = [
     ],
   },
   {
-    path: "/settings",
+    path: "/account",
     element: <UserSettingsRoot/>,
     children: [
       {
-        path: "/settings",
-        element: <UserSettingsDashboard/>,
+        path: "/account",
+        element: <Settings/>
+      },
+      {
+        path: "/account/booking-history",
+        element: <BookingHistory/>,
+      }, {
+        path: "/account/wishlist",
+        element: <Wishlist/>
+      },
+      {
+        path: "/account/inbox",
+        element: <Inbox/>,
       }
     ],
   },

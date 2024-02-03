@@ -1,12 +1,11 @@
-import React from 'react'
-import UserSettingsDashboard from '../dashboard'
 
-type Props = {}
+import { Outlet } from 'react-router-dom'
 
-const UserSettingsRoot = (props: Props) => {
+
+const UserSettingsRoot = () => {
   return (
 <>
-<UserSettingsDashboard/>
+<Outlet/>
 </>
   )
 }
