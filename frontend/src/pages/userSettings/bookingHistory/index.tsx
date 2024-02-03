@@ -17,17 +17,52 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import SettingsIcon from '@mui/icons-material/Settings';
 import "./bookingHistory.scss"
 import { useNavigate } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
+
 const drawerWidth = 270;
 
 interface Props {
   window?: () => Window;
 }
 
+function createData(
+  name: string,
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number,
+) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
+];
+
+
+
+
+
 export default function BookingHistory(props: Props) {
+
+
+  
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const [disp, setDisp] = React.useState(true);
+  const [state,setState]=React.useState("all")
   const navigate= useNavigate()
 
   const handleDrawerClose = () => {
@@ -186,7 +221,111 @@ export default function BookingHistory(props: Props) {
         </IconButton>
         </div>
 
-<h3>Booking History</h3>
+<p className='page-name'>Booking History</p>
+<div className="booking-history-sect">
+<ul>
+            <li
+              style={{
+                borderBottom: state == "all" ? "3px solid #3B71FE" : "none",
+                color:state == "all" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("all");
+              }}
+            >
+           ALL
+            </li>
+            <li
+              style={{
+                borderBottom: state == "pending" ? "3px solid #3B71FE" : "none",
+                color:state == "pending" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("pending");
+              }}
+            >
+              PENDING
+            </li>
+            <li
+              style={{
+                borderBottom: state == "completed" ? "3px solid #3B71FE" : "none",
+                color:state == "completed" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("completed");
+              }}
+            >
+             COMPLETED
+            </li>
+            <li
+              style={{
+                borderBottom: state == "incomplete" ? "3px solid #3B71FE" : "none",
+                color:state == "incomplete" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("incomplete");
+              }}
+            >
+              INCOMPLETE
+            </li>
+            <li
+              style={{
+                borderBottom: state == "canselled" ? "3px solid #3B71FE" : "none",
+                color:state == "canselled" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("canselled");
+              }}
+            >
+              CANSELLED
+            </li>
+            <li
+              style={{
+                borderBottom: state == "canselling" ? "3px solid #3B71FE" : "none",
+                color:state == "canselling" ? "3px solid #3B71FE" : "black",
+              }}
+              onClick={() => {
+                setState("canselling");
+              }}
+            >
+              CANSELLING
+            </li>
+          </ul>
+<Box style={{padding:"0px"}}>
+<p>No booking history</p>
+<TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell className='mobile-table-item'>#ID</TableCell>
+            <TableCell align="left" >Title</TableCell>
+            <TableCell align="left" className='mobile-table-item'>Type</TableCell>
+            <TableCell align="left" className='mobile-table-item'>Cost</TableCell>
+            <TableCell align="left">Status</TableCell>
+            <TableCell align="left">Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row" className='mobile-table-item'>
+                {row.name}
+              </TableCell>
+              <TableCell align="left">{row.calories}</TableCell>
+              <TableCell align="left" className='mobile-table-item'>{row.fat}</TableCell>
+              <TableCell align="left" className='mobile-table-item'>{row.carbs}</TableCell>
+              <TableCell align="left">{row.protein}</TableCell>
+              <TableCell align="left"><Button variant="contained" style={{fontSize:"13px", padding:"5px 10px"}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{width:"11px", height:"13px", marginRight:"8px"}}><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" fill='white'/></svg>Details</Button></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+</Box>
+</div>
       </Box>
     </Box>
   );

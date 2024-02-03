@@ -16,9 +16,6 @@ import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import SettingsIcon from "@mui/icons-material/Settings";
 import "./wishlist.scss";
 import { useNavigate } from "react-router-dom";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import PlaceIcon from "@mui/icons-material/Place";
 import CloseIcon from '@mui/icons-material/Close';
 import "./../../../assets/styles/gridSystem/grid.scss";
@@ -28,49 +25,16 @@ interface Props {
   window?: () => Window;
 }
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
 
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
 
 export default function Wishlist(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const [disp, setDisp] = React.useState(true);
-  const [value, setValue] = React.useState(0);
+  const [state,setState]=React.useState("hotel") 
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+
 
   const navigate = useNavigate();
 
@@ -314,143 +278,170 @@ export default function Wishlist(props: Props) {
         <p className="page-name">Wishlist</p>
 
         <div className="wishlist-sect">
-          <Box sx={{ width: "100%" }} style={{ padding: "0px" }}>
-            <Box style={{ marginBottom: "35px" }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="basic tabs example"
-              >
-                <Tab label="Hotel" {...a11yProps(0)} className="tab-element" />
-                <Tab label="Tour" {...a11yProps(1)} className="tab-element" />
-                <Tab
-                  label="Activity"
-                  {...a11yProps(2)}
-                  className="tab-element"
-                />
-                <Tab label="Rental" {...a11yProps(3)} className="tab-element" />
-                <Tab label="Car" {...a11yProps(4)} className="tab-element" />
-              </Tabs>
-            </Box>
-            <Box style={{ padding: "0px 20px" }}>
-              <CustomTabPanel value={value} index={0}>
-                <div className="wishlist-card ">
+        <ul>
+            <li
+              style={{
+                borderBottom: state == "hotel" ? "3px solid #1976D2" : "none",
+                color:state == "hotel" ? "#1976D2" : "black",
+              }}
+              onClick={() => {
+                setState("hotel");
+              }}
+            >
+              Hotel
+            </li>
+            <li
+              style={{
+                borderBottom: state == "tour" ? "3px solid #1976D2" : "none",
+                color:state == "tour" ? "#1976D2" : "black",
+              }}
+              onClick={() => {
+                setState("tour");
+              }}
+            >
+              Tours
+            </li>
+            <li
+              style={{
+                borderBottom: state == "activity" ? "3px solid #1976D2" : "none",
+                color:state == "activity" ? "#1976D2" : "black",
+              }}
+              onClick={() => {
+                setState("activity");
+              }}
+            >
+              Activity
+            </li>
+            <li
+              style={{
+                borderBottom: state == "rental" ? "3px solid #1976D2" : "none",
+                color:state == "rental" ? "#1976D2" : "black",
+              }}
+              onClick={() => {
+                setState("rental");
+              }}
+            >
+              Rental
+            </li>
+            <li
+              style={{
+                borderBottom: state == "car" ? "3px solid #1976D2" : "none",
+                color:state == "car" ? "#1976D2" : "black",
+              }}
+              onClick={() => {
+                setState("car");
+              }}
+            >
+              Car
+            </li>
+           
+          </ul>
+          <Box sx={{ width: "100%" }} style={{ padding: "0px", paddingRight:"20px" }}>
+         
+          <div className="wishlist-card ">
                
-                  <div className="wishlist-card-row row ">
-                   
-                    <div className="wishlist-card-img col-xl-3 large col-md-12 col-sm-12  col-xs-12">
-                      <img
-                        src="	https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/feature-12-450x417.png"
-                        alt=""
-                      />
-                    </div>
-                  
-                      <div className="content-left-sect col-xl-5 large col-md-12 col-sm-12  col-xs-12">
-                        <div className="upper">
-                          <div className="star-rate">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 576 512"
-                            >
-                              <path
-                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                                fill="#FA5636"
-                              />
-                            </svg>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 576 512"
-                            >
-                              <path
-                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                                fill="#FA5636"
-                              />
-                            </svg>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 576 512"
-                            >
-                              <path
-                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                                fill="#FA5636"
-                              />
-                            </svg>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 576 512"
-                            >
-                              <path
-                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                                fill="#FA5636"
-                              />
-                            </svg>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 576 512"
-                            >
-                              <path
-                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                                fill="#FA5636"
-                              />
-                            </svg>
-                          </div>
-                          <h2 className="name">Name</h2>
-                          <p className="facilities">romanticy</p>
-                        </div>
-                        <p className="location">
-                          <PlaceIcon
-                            style={{ color: "#5E6D77", fontSize: "16px" }}
-                          />
-                          Location
-                        </p>
+               <div className="wishlist-card-row row ">
+                
+                 <div className="wishlist-card-img col-xl-3 large col-md-12 col-sm-12  col-xs-12">
+                   <img
+                     src="	https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/feature-12-450x417.png"
+                     alt=""
+                   />
+                 </div>
+               
+                   <div className="content-left-sect col-xl-5 large col-md-12 col-sm-12  col-xs-12">
+                     <div className="upper">
+                       <div className="star-rate">
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 576 512"
+                         >
+                           <path
+                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                             fill="#FA5636"
+                           />
+                         </svg>
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 576 512"
+                         >
+                           <path
+                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                             fill="#FA5636"
+                           />
+                         </svg>
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 576 512"
+                         >
+                           <path
+                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                             fill="#FA5636"
+                           />
+                         </svg>
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 576 512"
+                         >
+                           <path
+                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                             fill="#FA5636"
+                           />
+                         </svg>
+                         <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 576 512"
+                         >
+                           <path
+                             d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                             fill="#FA5636"
+                           />
+                         </svg>
+                       </div>
+                       <h2 className="name">Name</h2>
+                       <p className="facilities">romanticy</p>
+                     </div>
+                     <p className="location">
+                       <PlaceIcon
+                         style={{ color: "#5E6D77", fontSize: "16px" }}
+                       />
+                       Location
+                     </p>
+                   </div>
+                   <div className="content-right-sect col-xl-4 large col-md-12 col-sm-12  col-xs-12">
+                     <div className="upper">
+                      <div className="rating-left">
+                      <div className="text-rating">Excellent</div>
+                       <div className="review">
+                         <span>3</span> Reviews
+                       </div>
                       </div>
-                      <div className="content-right-sect col-xl-4 large col-md-12 col-sm-12  col-xs-12">
-                        <div className="upper">
-                         <div className="rating-left">
-                         <div className="text-rating">Excellent</div>
-                          <div className="review">
-                            <span>3</span> Reviews
-                          </div>
-                         </div>
-                         <div className="rating-right">
-                         <span className="rating">
-                            5/ <small>5</small>
-                          </span>
-                         </div>
-                          <span className="mobile-rating">
-                            5/ <span>5</span> <span>Excellent</span>
-                          </span>
-                        </div>
-                        <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z" fill="#FFAB53"/></svg>
-                          From:{" "}
-                        
-                            <span>$159,00</span>
-                         
-                          /night
-                        </p>
+                      <div className="rating-right">
+                      <span className="rating">
+                         5/ <small>5</small>
+                       </span>
                       </div>
-                  
-                  </div>
-                  <div className="delete-btn">
-                      <CloseIcon style={{color:"white" , fontSize:"16px" ,fontWeight:"bold"}}/>
-                      </div>
-                </div>
-              </CustomTabPanel>
-              <CustomTabPanel value={value} index={1}>
-                <h1>No Wishlist</h1>
-              </CustomTabPanel>
-              <CustomTabPanel value={value} index={2}>
-                <h1>No Wishlist</h1>
-              </CustomTabPanel>
-              <CustomTabPanel value={value} index={3}>
-                <h1>No Wishlist</h1>
-              </CustomTabPanel>
-              <CustomTabPanel value={value} index={4}>
-                <h1>No Wishlist</h1>
-              </CustomTabPanel>
+                       <span className="mobile-rating">
+                         5/ <span>5</span> <span>Excellent</span>
+                       </span>
+                     </div>
+                     <p>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z" fill="#FFAB53"/></svg>
+                       From:{" "}
+                     
+                         <span>$159,00</span>
+                      
+                       /night
+                     </p>
+                   </div>
+               
+               </div>
+               <div className="delete-btn">
+                   <CloseIcon style={{color:"white" , fontSize:"16px" ,fontWeight:"bold"}}/>
+                   </div>
+             </div>
             </Box>
-          </Box>
+        
         </div>
       </Box>
     </Box>
