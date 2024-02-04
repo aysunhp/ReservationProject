@@ -3,83 +3,289 @@
 @import "./../../../assets/styles/gridSystem/grid.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
 
-
-.img-wrapper{
+  img {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    object-fit: cover;
-
-    img{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-
-    }
+  }
 }
 
-.accout-info{
-@include d-f(space-between,center);
-.account-prof-img{
+.accout-info {
+  @include d-f(space-between, center);
+  .account-prof-img {
     width: 50px;
     height: 50px;
-    overflow:hidden;
+    overflow: hidden;
     object-fit: cover;
     border-radius: 50%;
-    img{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
+  }
+
+  .account-name {
+    p {
+      font-style: 16px;
+      color: $text-color;
+      line-height: 20px;
+    }
+  }
 }
 
-.account-name{
-   p{
-    font-style: 16px;
-    color:$text-color;
-    line-height: 20px;
-   } 
-}
-}
-
-.mobile-open-btn{
-    width: 35px;
-    height: 30px;
-    background-color: $base-color;
+.mobile-open-btn {
+  width: 35px;
+  height: 30px;
+  background-color: $base-color;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
-    @include d-f(center,center);
-    position:absolute;
-    top:20px;
-    left:0px
+  @include d-f(center, center);
+  position: absolute;
+  top: 20px;
+  left: 0px;
 }
 
-.page-name{
-    color:#333333;
-    font-size: 30px;
-    margin-bottom: 20px ;
-    font-family: "Roboto";
-    font-weight: 400;
-    line-height: 40px;
+.setting-page-name {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: "Roboto";
+  font-weight: 400;
+  line-height: 40px;
 }
 
-.setting-sect{
-    font-family: "Roboto";
-    margin-top: 30px;
-    padding: 30px;
-    // background-color: $basic-color;
-    .personal-info-sect{
-         background-color: $basic-color;
-         width: 100%;
-         .personal-info-sect-title{
-            padding: 30px;
-             margin-top: 30px;
-            font-size: 14px;
-            color:  #1A2B48;
-            text-transform: uppercase;
-            font-weight: 500;
-         }
+.setting-sect {
+  font-family: "Roboto";
+  margin-top: 30px;
+  .personal-info-sect {
+    background-color: $basic-color;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    .personal-info-sect-title {
+      padding: 30px 30px 15px 30px;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #1a2b48;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
+    .location-info-sect-title{
+        padding: 10px 30px 20px 30px;
+        font-size: 14px;
+        color: #1a2b48;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    .form-wrapper {
+      padding: 15px;
+      .form-firt-sect {
+        padding: 0px 15px;
+        .username-input,
+        .pEmail-input {
+          margin: 0px;
+          margin-bottom: 25px;
+        }
+      }
+
+      .form-second-sect {
+        padding: 0px 15px;
+        .email-input,
+        .phone-input {
+          margin: 0px;
+          margin-bottom: 25px;
+        }
+      }
+
+      .form-third-sect {
+        padding: 0px 15px;
+        .MuiTextarea-root.MuiTextarea-variantOutlined.MuiTextarea-colorNeutral.MuiTextarea-sizeMd.MuiTextarea-formControl.css-1cquhrj-JoyTextarea-root {
+          margin: 0px;
+          min-height: 122px;
+          .MuiTextarea-textarea.css-sws92j-JoyTextarea-textarea {
+            margin: 0px;
+          }
+        }
+      }
+
+      .form-fourth-sect {
+        padding: 0px 5px;
+        font-size: 14px;
+        color: #1a2b48;
+      }
+      .divider-wrapper {
+        padding: 15px;
+        margin: 10px 0px;
+      }
+
+      .change-account-img {
+        .account-image-wrapper {
+          margin: 0px;
+          .account-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0px;
+            margin: 0px 15px;
+            img {
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+            }
+          }
+
+          .img-content {
+            font-size: 14px;
+            margin: 0px;
+           
+            p {
+              color: #1a2b48;
+              margin-bottom: 10px;
+            }
+            span {
+              color: #5e6d77;
+            }
+          }
+
+
+        }
+
+        .change-button{
+            padding: 0px 15px;
+        }
+      }
+    }
+
+    .location-form-wrapper {
+        padding: 15px;
+        .form-firt-sect {
+          padding: 0px 15px;
+          .hAirport-input,
+          .region-input {
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+  
+        .form-second-sect {
+          padding: 0px 15px;
+          .address-input,
+          .zipCode-input {
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+  
+        .form-third-sect {
+          padding: 0px 15px;
+          .city-input,
+          .country-input {
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+  
+        .divider-wrapper {
+          padding: 15px 15px 5px 15px;
+          margin: 10px 0px 0px 0px;
+        }
+      }
+
+      .save-button{
+        padding: 15px 30px 0px 30px;
+      }
+  }
+
+  .change-pass-sect{
+    background-color: $basic-color;
+    width: 100%;
+
+    .change-pass-sect-title {
+        padding: 30px 30px 15px 30px;
+        font-size: 14px;
+        color: #1a2b48;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .form-wrapper{
+        padding: 15px 15px 30px 15px;
+        .form-firt-sect {
+          padding: 0px 15px;
+          .pass-input {
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+  
+        .form-second-sect {
+          padding: 0px 15px;
+          .new-pass-input{
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+  
+        .form-third-sect {
+          padding: 0px 15px;
+          .new-pass-again-input{
+            margin: 0px;
+            margin-bottom: 25px;
+          }
+        }
+
+        .divider-wrapper {
+            padding: 15px;
+            margin: 10px 0px 15px 0px;
+          }
+
+          .save-button{
+            padding: 0px 15px ;
+          }
+      }
+  }
 }
+
+@media (max-width: 768px) {
+  .settings-page-wrapper-box {
+    padding: 20px 0px !important;
+
+    .setting-page-name {
+      text-align: center;
+    }
+
+    .personal-info-sect{
+        .form-wrapper{
+            .change-account-img{
+                .change-button{
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+   
+  
+      .personal-info-sect{
+          .form-wrapper{
+              .change-account-img{
+                  .change-button{
+                      margin-top: 20px;
+                  }
+              }
+          }
+      }
+    }
+  
