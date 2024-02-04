@@ -254,6 +254,7 @@ export default function Wishlist(props: Props) {
       </Box>
       <Box
         component="main"
+        className="wishlist-page-wrapper-box"
         sx={{
           flexGrow: 1,
           p: 3,

@@ -17,6 +17,7 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CloseIcon from '@mui/icons-material/Close';
 import "./inbox.scss"
+import ApartmentIcon from '@mui/icons-material/Apartment';
 
 import { useNavigate } from 'react-router-dom';
 const drawerWidth = 270;
@@ -174,6 +175,7 @@ export default function Inbox(props: Props) {
       </Box>
       <Box
         component="main"
+        className='inbox-page-wrapper-box'
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         style={{padding:"20px 40px", backgroundColor:"#F5F7F9", minHeight:"100vh"}}
      >
@@ -193,6 +195,12 @@ export default function Inbox(props: Props) {
 
   <Box style={{padding:"0px"}}>
 <div className="conversation-item">
+  <div className="service-type">
+    <span className='svg-wrapper'>
+    <ApartmentIcon style={{fontSize:"17px",color:"black"}}/>
+    </span>
+    <span>Hotel</span>
+  </div>
   <div className="remove-btn">
   <CloseIcon className="btn-svg" style={{color:"black" , fontSize:"16px" ,fontWeight:"bold"}}/>
   </div>
@@ -218,6 +226,7 @@ export default function Inbox(props: Props) {
 </div>
   </div>
 </div>
+
   </Box>
 </div>
       </Box>

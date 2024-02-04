@@ -57,7 +57,7 @@
 
 .page-name{
     color:#333333;
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 20px ;
     font-family: "Roboto";
     font-weight: 400;
@@ -81,8 +81,30 @@
     gap:18px;
     // border: 1px solid lightgray;
     padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(123, 123, 123, 0.24) 0px 3px 6px;
     position: relative;
+margin-top: 40px;
+border: 1px solid rgb(230, 230, 230);
+.service-type{
+    border-radius: 3px 3px 0 0;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    position: absolute;
+    left: -1px;
+    top: -31px;
+    border: 1px solid rgb(230, 230, 230);
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:6px;
+
+    .svg-wrapper{
+        margin-top: 5px;
+    }
+}
     
     .remove-btn{
 background-color: #EEEEEE;
@@ -165,3 +187,24 @@ border-radius: 4px;
    }
 }
     }
+
+    @media (max-width: 768px) {
+
+        .inbox-page-wrapper-box {
+            padding: 20px 0px !important;
+        
+        .page-name {
+            text-align: center;
+          }
+    }
+       }
+
+       @media (max-width: 330px) {
+
+        .inbox-page-wrapper-box {
+        
+       .inbox-sect{
+        padding: 10px !important;
+       }
+    }
+       }

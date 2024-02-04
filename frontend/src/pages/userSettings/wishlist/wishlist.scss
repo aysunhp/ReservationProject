@@ -381,3 +381,15 @@ margin-top: 5px;
          }
     }
    }
+
+
+   @media (max-width: 768px) {
+
+    .wishlist-page-wrapper-box {
+        padding: 20px 0px !important;
+    
+    .page-name {
+        text-align: center;
+      }
+}
+   }

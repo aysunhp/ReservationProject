@@ -207,6 +207,7 @@ export default function BookingHistory(props: Props) {
       </Box>
       <Box
         component="main"
+        className='booking-history-page-wrapper-box'
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         style={{padding:"20px 40px", backgroundColor:"#F5F7F9", minHeight:"100vh"}}
       >
