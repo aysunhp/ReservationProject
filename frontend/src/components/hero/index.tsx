@@ -5,6 +5,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 
 
+
 const Hero = () => {
   const [state, setState] = useState("hotel");
   return (
@@ -222,6 +223,8 @@ const Hero = () => {
             </li>
           </ul>
         </div>
+
+      
       </div>
     </section>
   );
