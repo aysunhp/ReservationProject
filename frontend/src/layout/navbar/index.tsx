@@ -1,45 +1,31 @@
+import { useState, useEffect, useRef } from "react";
 import "./navbar.scss";
 import Divider from "@mui/material/Divider";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useEffect ,useRef} from "react";
+
 const Navbar = () => {
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isVisible, setVisible] = useState("");
+
 
   const dropdownRef = useRef<HTMLInputElement>(null);
-  const menuDropdownRef = useRef<HTMLInputElement>(null);
-console.log(isVisible)
-  useEffect(() => {
-    const handleOutsideClick = (event:any) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target) ) {
-        setDropdownVisible(false);
-      
-      }
-    };
 
-    document.addEventListener("mousedown", handleOutsideClick);
 
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
-
-  useEffect(() => {
-  const handleOutsideClickMenu = (event:any) => {
-    if (menuDropdownRef.current && !menuDropdownRef.current.contains(event.target)) {
-      // setDropdownVisible(false);
-      setVisible("")
+useEffect(() => {
+  const handleOutsideClick = (event :any) => {
+    if (
+      (dropdownRef.current && !dropdownRef.current.contains(event.target)) 
+    ) {
+      setDropdownVisible(false);
     }
   };
 
-  document.addEventListener("mousedown", handleOutsideClickMenu);
+  document.addEventListener("mousedown", handleOutsideClick);
 
   return () => {
-    document.removeEventListener("mousedown", handleOutsideClickMenu);
+    document.removeEventListener("mousedown", handleOutsideClick);
   };
-}, []);
+}, []); 
 
   return (
     <>
@@ -150,11 +136,13 @@ console.log(isVisible)
             </div>
             <div>
               <ul>
-                <li>Home</li>
-                <li onClick={()=>{
-                  setVisible("hotel")
-                  console.log(isVisible)
-                }} className="hotel-list-item">
+                <Link to="/"><li>Home</li></Link>
+                <li
+                //  onClick={()=>{
+                //   setVisible("hotel")
+                //   console.log(isVisible)
+                // }} 
+                className="hotel-list-item">
                   Hotel{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -162,10 +150,17 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+                  <ul className="hotel-menu-dropdown menu-dropdown">
+        <Link to="/"><li>Home Search Halfmap</li></Link>
+        <Link to="/"><li>Detail Hotel</li></Link>
+        <Link to="/"><li>Detail Room</li></Link>
+      </ul>
                 </li>
-                <li onClick={()=>{
-                  setVisible("tour")
-                }} className="tour-list-item">
+                <li
+                //  onClick={()=>{
+                //   setVisible("tour")
+                // }}
+                 className="tour-list-item">
                   Tour{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -173,10 +168,21 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+                  <ul className="tour-menu-dropdown menu-dropdown">
+     
+         <Link to="/"><li>Tour Search Topbar</li></Link>
+        <Link to="/"><li>Detail Tour</li></Link>
+        <Link to="/"><li>Tour Package</li></Link>
+        <Link to="/"><li>Tour Starttime</li></Link>
+        <Link to="/"><li>External Booking</li></Link>
+        <Link to="/"><li>Book & Inquary Form</li></Link>
+       </ul>
                 </li>
-                <li onClick={()=>{
-                  setVisible("activity")
-                }} className="activity-list-item">
+                <li
+                //  onClick={()=>{
+                //   setVisible("activity")
+                // }}
+                 className="activity-list-item">
                   Activity{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -184,10 +190,19 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+                  <ul className="activity-menu-dropdown menu-dropdown">
+      
+          <Link to="/"><li>Activity Search Topbar</li></Link>
+        <Link to="/"><li>Detail Activity</li></Link>
+        <Link to="/"><li>Activity Starttime</li></Link>
+        <Link to="/"><li>Book & Inquary Form</li></Link>
+   </ul>
                 </li>
-                <li onClick={()=>{
-                  setVisible("rental")
-                }} className="rental-list-item">
+                <li 
+                // onClick={()=>{
+                //   setVisible("rental")
+                // }} 
+                className="rental-list-item">
                   Rental{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -195,10 +210,20 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+
+                  <ul className="menu-dropdown">
+       
+          <Link to="/"><li>Activity Search Topbar</li></Link>
+        <Link to="/"><li>Detail Activity</li></Link>
+        <Link to="/"><li>Activity Starttime</li></Link>
+        <Link to="/"><li>Book & Inquary Form</li></Link>
+     </ul>
                 </li>
-                <li onClick={()=>{
-                  setVisible("car")
-                }} className="car">
+                <li
+                //  onClick={()=>{
+                //   setVisible("car")
+                // }}
+                 className="car-list-item">
                   Car{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -206,10 +231,18 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+                  <ul className="car-menu-dropdown">
+       
+        <Link to="/"><li>Home Search Halfmap</li></Link>
+        <Link to="/"><li>Detail Hotel</li></Link>
+        <Link to="/"><li>Detail Room</li></Link>
+       </ul>
                 </li>
-                <li onClick={()=>{
-                  setVisible("pages")
-                }} className="pages">
+                <li 
+                // onClick={()=>{
+                //   setVisible("pages")
+                // }}
+                 className="pages">
                   Pages{" "}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path
@@ -217,6 +250,13 @@ console.log(isVisible)
                       fill="white"
                     />
                   </svg>
+                  <ul className="menu-dropdown">
+
+        <Link to="/"><li>Home Search Halfmap</li></Link>
+        <Link to="/"><li>Detail Hotel</li></Link>
+        <Link to="/"><li>Detail Room</li></Link>
+       
+     </ul>
                 </li>
               </ul>
             </div>
@@ -266,7 +306,7 @@ console.log(isVisible)
           localStorage.clear();
         }}>Log out</li>
       </ul>
-      <ul className="menu-dropdown" style={{display:isVisible===""?"none":"block"}} ref={menuDropdownRef}>
+      {/* <ul className="menu-dropdown"style={{ display: isVisible === "" ? "none" : "block" ,}} ref={menuDropdownRef}>
        {
         isVisible==="pages"?<>
         <Link to="/"><li>About</li></Link>
@@ -287,7 +327,7 @@ console.log(isVisible)
         <Link to="/"><li>Detail Activity</li></Link>
         <Link to="/"><li>Activity Starttime</li></Link>
         <Link to="/"><li>Book & Inquary Form</li></Link>
-       </>:isVisible==="activity"?<>
+       </>:isVisible==="tour"?<>
         <Link to="/"><li>Tour Search Topbar</li></Link>
         <Link to="/"><li>Detail Tour</li></Link>
         <Link to="/"><li>Tour Package</li></Link>
@@ -301,7 +341,7 @@ console.log(isVisible)
        </>:null
        }
         
-      </ul>
+      </ul> */}
       </header>
     </>
   );

@@ -53,6 +53,7 @@ header {
     width: 100%;
     background-color: #3f464dc4;
     position: absolute;
+    z-index: 30;
     .containerr {
       padding: 20px 40px;
       @include d-f(space-between, center);
@@ -93,13 +94,14 @@ display: none;
         }
       }
 
-      ul {
+      ul {  
         @include d-f(space-between, center);
         gap: 30px;
         margin: 0px;
         li {
           color: white;
           font-size: 16px;
+          position: relative;
           &:hover {
             color: $base-color;
           }
@@ -111,8 +113,41 @@ display: none;
             height: 12px;
 
           }
-        }
 
+          .menu-dropdown {
+            background-color: $basic-color;
+            padding: 25px 30px;
+            border-radius: 15px;
+            border: 1px solid lightgray;
+            position: absolute;
+            left: 0px;
+            z-index: 12;
+            min-width: 170px;
+            height: auto;
+            display: none;
+            li {
+              color: #232323;
+              font-size: 14px;
+              margin-bottom: 15px;
+            }
+        
+          }
+
+      
+        }
+        .hotel-list-item:hover {
+                  .hotel-menu-dropdown{
+            display: block ;
+            bottom: -200px;
+          }
+        }
+        .tour-list-item:hover {
+          .tour-menu-dropdown{
+    display: block ;
+    bottom: -200px;
+  }
+
+}
        
       }
 
@@ -184,22 +219,7 @@ display: none;
       margin-top: 15px;
     }
   }
-  .menu-dropdown {
-    background-color: $basic-color;
-    padding: 25px 30px;
-    border-radius: 15px;
-    border: 1px solid lightgray;
-    position: absolute;
-    bottom: -304px;
-    right: 40px;
-    z-index: 12;
-    li {
-      color: #232323;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
 
-  }
 }
 
 
