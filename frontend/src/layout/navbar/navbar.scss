@@ -219,9 +219,22 @@ display: none;
       margin-top: 15px;
     }
   }
-
 }
 
+.ant-modal-content{
+  padding: 0px !important;
+}
+  .modal-header-sect{
+    @include d-f(center,center);
+    gap:40px;
+    padding: 30px;
+    li{
+      font-size: 16px;
+      color: #1a232b;
+      margin: 0px;
+      cursor: pointer;
+    }
+  }
 
 @media only screen and (max-width: 768px) {
 header{

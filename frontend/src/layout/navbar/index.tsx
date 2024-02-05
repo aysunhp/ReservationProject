@@ -2,9 +2,20 @@ import { useState, useEffect, useRef } from "react";
 import "./navbar.scss";
 import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
+import SignIN from "../../components/signIn";
+import {  Modal } from 'antd';
+import Box from '@mui/material/Box';
+import SignUp from "../../components/signUp";
+
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+const [loginType,setLoginType] =useState("signIn")
 
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
 
@@ -275,7 +286,8 @@ useEffect(() => {
               </li>
               <li>
                 <button onClick={()=>{
-                  setDropdownVisible(true)
+                  JSON.parse(localStorage.getItem("user"))? setDropdownVisible(true):setOpen(true);
+                 
                 }} className="user-acc-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path
@@ -288,24 +300,58 @@ useEffect(() => {
             </ul>
           </div>
         </nav>
-        <ul className="dropdown-menu" style={{display:isDropdownVisible?"block":"none"}} ref={dropdownRef}>
-        <li className="user-img-name">
-          <div className="user-img-wrapper">
-            <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg" alt="" />
-          </div>
-          <p>
-            Hi,
-            <br />
-            <span>aysnhp</span>
-          </p>
-        </li>
-        <Link to="/account"><li>Dashboard</li></Link>
-        <Link to="/account/booking-history"><li>Booking History</li></Link>
-        <Divider />
-        <li className="log-out" onClick={()=>{
-          localStorage.clear();
-        }}>Log out</li>
-      </ul>
+        {/* <div className="opened-window" style={{display:isDropdownVisible?"block":"none"}} ref={dropdownRef}>
+          {
+            JSON.parse(localStorage.getItem("user"))? */}
+            <ul className="dropdown-menu" style={{display:isDropdownVisible?"block":"none"}} ref={dropdownRef}>
+            <li className="user-img-name">
+              <div className="user-img-wrapper">
+                <img src="https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg" alt="" />
+              </div>
+              <p>
+                Hi,
+                <br />
+                <span>aysnhp</span>
+              </p>
+            </li>
+            <Link to="/account"><li>Dashboard</li></Link>
+            <Link to="/account/booking-history"><li>Booking History</li></Link>
+            <Divider />
+            <li className="log-out" onClick={()=>{
+              localStorage.clear();
+            }}>Log out</li>
+          </ul>
+            {/* <div className="sign-in-wrapper"> */}
+        
+      <Modal
+        open={open}
+        title=""
+        onCancel={handleCancel}
+        footer={[]}
+      >
+        <Box>
+  
+     <ul className="modal-header-sect" >
+      <li onClick={()=>{
+        setLoginType("signIn")
+      }} style={{color:loginType==="signIn"?"#3b71fe":"#5e6d77", textDecoration:loginType==="signIn"?"underline":"none"}}>Sign In</li>
+      <li onClick={()=>{
+        setLoginType("signUp")
+      }}  style={{color:loginType==="signUp"?"#3b71fe":"#5e6d77", textDecoration:loginType==="signUp"?"underline":"none"}}>Sign Up</li>
+     </ul>
+   
+    <Divider/>
+    <div id="modal-modal-description" >
+    {
+      loginType==="signIn"? <SignIN/>:<SignUp/>
+    }
+    </div>
+  </Box>
+      </Modal>
+  
+          {/* </div> */}
+          {/* } */}
+        {/* </div> */}
       {/* <ul className="menu-dropdown"style={{ display: isVisible === "" ? "none" : "block" ,}} ref={menuDropdownRef}>
        {
         isVisible==="pages"?<>

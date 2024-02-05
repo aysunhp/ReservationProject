@@ -1,0 +1,54 @@
+@import "./../../assets/styles/mixin/mixin.scss";
+@import "./../../assets/styles/varibles/varibles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+
+
+.sign-up-section{
+    width: 100%;
+    z-index: 31;
+    .containerr{
+        padding: 0px 30px 40px 30px;
+       width: 100%;
+h1{
+    margin: 20px 0px 30px 0px;
+}
+.inp{
+    margin-bottom: 20px;
+    padding: 10px 16px;
+}
+.login-btn{
+    width: 100%;
+    padding: 10px 13px;
+    font-size: 16px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+.login-footer{
+    @include d-f(space-between,center);
+    p{
+        font-size: 16px;
+        color: #232323;
+        margin: 0px;
+        text-decoration: underline;
+    &:hover{
+        color:$base-color;
+    }
+    }
+    .login-checkbox{
+        margin: 0px;
+    }
+    label{
+        color: #5e6d77;
+        font-size: 16px;
+    }
+}
+
+}
+
+
+}
