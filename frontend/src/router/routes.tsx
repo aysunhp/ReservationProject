@@ -11,6 +11,7 @@ import Wishlist from "../pages/userSettings/wishlist";
 import About from "../pages/user/about";
 import Contact from "../pages/user/contact";
 import FAQ from "../pages/user/faq";
+import BecomeLocalExpert from "../pages/user/localExpert";
 
 export const routes = [
   {
@@ -32,6 +33,10 @@ export const routes = [
       {
         path: "/faq",
         element: <FAQ/>,
+      },
+      {
+        path: "/become-local-expert",
+        element: <BecomeLocalExpert/>,
       },
     ],
   },

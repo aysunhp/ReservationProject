@@ -1,0 +1,60 @@
+@import "./../../assets/styles/mixin/mixin.scss";
+@import "./../../assets/styles/varibles/varibles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+.faq-page-content {
+    width: 100%;
+    .container {
+      margin: 80px auto;
+      h1 {
+        margin-bottom: 50px;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 48px;
+        color: $primary-color;
+        text-align: center;
+      }
+      .faq-wrapper {
+        .faq-content-left-sect,
+        .faq-content-right-sect {
+          padding: 10px;
+          .ant-collapse-header {
+            padding: 16px 24px;
+          }
+          .ant-collapse-header-text {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+            color: $primary-color;
+          }
+          .ant-collapse-content {
+            padding: 0px 10px;
+            .ant-collapse-content-box {
+              p {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 26px;
+                color: #727272;
+                padding: 0px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .faq-sect {
+.faq-page-content{
+    .container{
+        max-width: 100%;
+        h1{
+            font-size: 30px;
+        }
+    }
+}
+    }
+  }

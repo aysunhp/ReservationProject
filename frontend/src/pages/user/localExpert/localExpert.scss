@@ -1,0 +1,243 @@
+@import "./../../../assets/styles/mixin/mixin.scss";
+@import "./../../../assets/styles/varibles/varibles.scss";
+@import "./../../../assets/styles/gridSystem/grid.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.local-expert-sect {
+  background-color: #ffffff;
+  font-family: "Roboto";
+  .local-expert-hero {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    // margin: 0px;
+    @include d-f(center, center);
+
+    .container {
+      width: 70%;
+      position: relative;
+      padding: 50px 20px 0px 20px;
+
+      h1 {
+        color: white;
+        font-size: 36px;
+        margin: 0px;
+        position: relative;
+        z-index: 2;
+      }
+      .page-breadcrumb {
+        .breadcrumbs {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin: 0px auto;
+          position: relative;
+          z-index: 2;
+          @include d-f(flex-start, center);
+          .page-name {
+            color: $basic-color;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 1;
+    }
+  }
+
+  .local-expert-meet-superhosts-sect {
+    background-color: #f7f8fa;
+    padding: 60px 0px 0px 0px;
+    .container {
+      padding: 10px;
+      h1 {
+        color: $primary-color;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 46px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+      p {
+        color: #727272;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        text-align: center;
+        max-width: 600px;
+      }
+    }
+    .team-members-wrapper {
+      .team-member-item {
+        margin-bottom: 50px;
+        .item-image-wrapper {
+          border-radius: 50%;
+          max-width: 250px;
+          width: 100%;
+          max-height: 250px;
+          height: 100%;
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .local-expert-main-sect {
+    margin: 50px 0px;
+    .container {
+      padding: 10px;
+
+      .widget-wrapper {
+        padding: 10px;
+        margin-bottom: 50px;
+        .widget {
+          width: 100%;
+          height: 630px;
+          background-image: url("https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/image.png");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          @include d-f(center, center);
+          .containerr {
+            width: 50%;
+            @include d-f(center, center);
+
+            h1 {
+              color: $basic-color;
+              text-align: center;
+              font-size: 36px;
+              font-weight: 700;
+              line-height: 46px;
+            }
+          }
+        }
+      }
+
+      h1{
+        text-align: center;
+        font-size: 36px;
+       font-weight: 700;
+           line-height: 46px;
+           padding: 10px;
+      }
+
+      .work-step-cards{
+        .step{
+          padding: 10px;
+     .step-inner-wrapper{
+      box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
+      padding: 30px 20px;
+      border-radius: 20px;
+      .step-count{
+       
+.step-icon-wrapper{
+  margin-right: 20px;
+  .step-icon{
+    padding: 10px;
+    }
+}
+      }
+      .step-content-wrapper{
+        .step-content-title{
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 32px;
+          color: $primary-color;
+          margin-bottom: 10px;
+        }
+        .step-content{
+          color: #7a7a7a; 
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 26px;
+        }
+      }
+     }
+        }
+      }
+
+      .register-btn-wrapper{
+       width: 100%;
+       padding: 20px;
+        
+        box-sizing: border-box;
+       
+        text-align: center;
+        margin: 20px auto;
+        .register-btn{
+          font-weight: 600;
+          padding: 15px 25px;
+          font-size: 17px;
+          border-radius: 35px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
+.MuiBreadcrumbs-root.MuiBreadcrumbs-sizeMd.breadcrumbs.css-ld9wxb-JoyBreadcrumbs-root {
+  padding: 0px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .local-expert-sect {
+    .local-expert-hero {
+      .container {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .local-expert-sect {
+    .local-expert-hero {
+      height: 200px;
+      .container {
+        h1 {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .local-expert-meet-superhosts-sect {
+      .team-members-wrapper {
+        .team-member-item {
+          .item-image-wrapper {
+            max-width: 168px;
+            height: 168px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .local-expert-sect {
+    .local-expert-meet-superhosts-sect {
+      .team-members-wrapper {
+        .team-member-item {
+          margin-bottom: 0px;
+          .item-image-wrapper {
+            max-width: 250px;
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}

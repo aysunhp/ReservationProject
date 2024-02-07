@@ -10,7 +10,7 @@ const MeetOurTeam = () => {
     container-md,
     container-sm,
     ">
-    <h1>Meet our team</h1>
+
     <div className="team-members-wrapper row">
         <div className="team-member-item col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12">
             <div className="item-image-wrapper">
