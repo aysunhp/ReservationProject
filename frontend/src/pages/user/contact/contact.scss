@@ -7,7 +7,7 @@
 
     .contact-hero {
         width: 100%;
-        height: 400px;
+        height: 300px;
         background-color: #fff;
         background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
         background-position: center;
@@ -17,14 +17,14 @@
         // margin: 0px;
         @include d-f(center, center);
     
-        .containerr {
+        .container {
             width: 70%;
           position: relative;
           padding: 50px 20px 0px 20px; 
 
           h1 {
             color: white;
-            font-size: 64px;
+            font-size: 36px;
             margin: 0px;
             position: relative; 
             z-index: 2;
@@ -60,10 +60,12 @@
     }
   }
   .contact-page-content{
-    margin: 50px 25px;
+    margin: 50px 0px;
 
+   .container{
     .contact-content-left-sect{
       padding: 10px;
+      margin: 0px;
       h1{
         color: $primary-color;
         font-size: 30px;
@@ -95,6 +97,7 @@
     }
     .contact-content-right-sect{
       padding: 10px;
+      margin: 0px;
     .contact-content-right-sect-inner-wrapper{
      padding: 30px;
      border-radius: 15px;
@@ -113,12 +116,16 @@
           // margin: 0px;
           .inp{
             margin-bottom: 25px;
-            padding: 10px 16px;}
+            padding: 10px 16px;
+          color: #5E6D77;
+          }
             .text-area-inp{
               width: 100%;
               height: 160px;
               margin-bottom: 20px;
               text-align: left;
+              color: #5E6D77;
+              font-size: 16px;
             }
       }
     
@@ -141,15 +148,31 @@
       }
     }
     }
+   }
   }
 }
+
+.MuiBreadcrumbs-root.MuiBreadcrumbs-sizeMd.breadcrumbs.css-ld9wxb-JoyBreadcrumbs-root{
+  padding: 0px !important;
+ }
 @media only screen and (max-width: 992px) {
     .contact-sect {
     .contact-hero{
+      height:200px;
         .container {
             h1{
              font-size: 24px;
             }
+           }
+    }  
+   }
+  
+  }
+  @media only screen and (max-width: 1200px) {
+    .contact-sect {
+    .contact-hero{
+        .container {
+            width: 100%;
            }
     }  
    }

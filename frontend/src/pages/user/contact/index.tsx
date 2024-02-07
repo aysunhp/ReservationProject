@@ -8,10 +8,13 @@ import { Input } from "antd";
 import { Button } from "antd";
 const { TextArea } = Input;
 const Contact = () => {
+
+
+
   return (
     <section className="contact-sect">
       <div className="contact-hero">
-        <div className="containerr">
+        <div className="container ">
           <h1>Contact</h1>
           <div className="page-breadcrumb">
             <Breadcrumbs
@@ -34,13 +37,18 @@ const Contact = () => {
           width="600"
           height="450"
           style={{ border: "0" }}
-          allowfullscreen=""
+          allowFullScreen={true}
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <div className="contact-page-content row">
-        <div className="contact-content-left-sect  col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+      <div className="contact-page-content ">
+       <div className="container container-xxl
+    container-xl
+    container-lg
+    container-md
+    container-sm row">
+       <div className="contact-content-left-sect  col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
           <h1>Contact information</h1>
           <p>
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
@@ -138,6 +146,7 @@ const Contact = () => {
           </form>
          </div>
         </div>
+       </div>
       </div>
     </section>
   );

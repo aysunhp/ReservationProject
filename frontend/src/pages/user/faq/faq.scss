@@ -1,0 +1,253 @@
+@import "./../../../assets/styles/mixin/mixin.scss";
+@import "./../../../assets/styles/varibles/varibles.scss";
+@import "./../../../assets/styles/gridSystem/grid.scss";
+
+.faq-sect {
+  background-color: #ffffff;
+  font-family: "Roboto";
+  .faq-hero {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    // margin: 0px;
+    @include d-f(center, center);
+
+    .container {
+      width: 70%;
+      position: relative;
+      padding: 50px 20px 0px 20px;
+
+      h1 {
+        color: white;
+        font-size: 36px;
+        margin: 0px;
+        position: relative;
+        z-index: 2;
+      }
+      .page-breadcrumb {
+        .breadcrumbs {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin: 0px auto;
+          position: relative;
+          z-index: 2;
+          @include d-f(flex-start, center);
+          .page-name {
+            color: $basic-color;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 1;
+    }
+  }
+  .faq-page-content {
+    width: 100%;
+    .container {
+      margin: 80px auto;
+      h1 {
+        margin-bottom: 50px;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 48px;
+        color: $primary-color;
+        text-align: center;
+      }
+      .faq-wrapper {
+        .faq-content-left-sect,
+        .faq-content-right-sect {
+          padding: 10px;
+          .ant-collapse-header {
+            padding: 16px 24px;
+          }
+          .ant-collapse-header-text {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+            color: $primary-color;
+          }
+          .ant-collapse-content {
+            padding: 0px 10px;
+            .ant-collapse-content-box {
+              p {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 26px;
+                color: #727272;
+                padding: 0px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .subscribe-sect {
+    margin: 20px 0px 100px 0px;
+    .container {
+        padding: 10px;
+      .subscribe-content-left-sect {
+        border-radius: 20px 0px 0px 20px;
+        .img-wrapper {
+          max-width: 100%;
+          width: 100%;
+          max-height: 522px;
+          height: auto;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 20px 0px 0px 20px;
+          margin-bottom: -4px;
+          img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+          }
+        }
+      }
+      .subscribe-content-right-sect {
+        padding: 80px 120px;
+        border: 1px solid #dedede;
+        border-left: none;
+        border-radius: 0px 20px 20px 0px;
+        background-color: #fcfcfc;
+        h1 {
+          font-size: 36px;
+          font-weight: 700;
+          line-height: 46px;
+          text-align: center;
+        }
+        p {
+          color: #727272;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 26px;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        .MuiInput-root.MuiInput-variantOutlined.MuiInput-colorNeutral.MuiInput-sizeMd.MuiInput-formControl.css-q795g5-JoyInput-root {
+          width: 100%;
+          padding: 5px 20px 5px 25px;
+          border-radius: 40px;
+
+          .MuiInput-endDecorator.css-ki6l96-JoyInput-endDecorator {
+            border-radius: 20px;
+            .MuiButton-root.MuiButton-variantSolid.MuiButton-colorPrimary.MuiButton-sizeMd.css-ooz4mz-JoyButton-root {
+              border-radius: 30px;
+              padding: 16px 25px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.MuiBreadcrumbs-root.MuiBreadcrumbs-sizeMd.breadcrumbs.css-ld9wxb-JoyBreadcrumbs-root {
+  padding: 0px !important;
+}
+
+
+
+@media only screen and (max-width: 1400px) {
+    .faq-sect {
+      .subscribe-sect {
+          .container {
+            .subscribe-content-left-sect {
+             .img-wrapper{
+              height: 450px;
+             }
+            }
+          }
+        }
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .faq-sect {
+      .faq-hero {
+        .container {
+          width: 100%;
+        }
+      }
+      .subscribe-sect {
+          .container {
+            .subscribe-content-left-sect {
+             .img-wrapper{
+              height: 522px;
+             }
+            }
+          }
+        }
+    }
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    .faq-sect {
+      .faq-hero {
+        height: 200px;
+        .container {
+          h1 {
+            font-size: 24px;
+          }
+        }
+      }
+      .subscribe-sect {
+        .container {
+          .subscribe-content-left-sect {
+            border-radius: 20px 20px 0px 0px;
+  
+            .img-wrapper {
+              border-radius: 20px 20px 0px 0px;
+              max-height: 522px;
+              height: auto;
+            }
+          }
+          .subscribe-content-right-sect {
+            border-radius: 0px 0px 20px 20px;
+            border: 1px solid #dedede;
+            border-top: none;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .faq-sect {
+.faq-page-content{
+    .container{
+        max-width: 100%;
+        h1{
+            font-size: 30px;
+        }
+    }
+}
+
+      .subscribe-sect {
+        .container {
+            max-width: 100%;
+          .subscribe-content-right-sect {
+            padding: 60px 10px;
+        h1{
+            font-size: 28px;
+        }
+          }
+        }
+      }
+    }
+  }

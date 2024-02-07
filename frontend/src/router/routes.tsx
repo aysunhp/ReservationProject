@@ -10,6 +10,7 @@ import Inbox from "../pages/userSettings/inbox";
 import Wishlist from "../pages/userSettings/wishlist";
 import About from "../pages/user/about";
 import Contact from "../pages/user/contact";
+import FAQ from "../pages/user/faq";
 
 export const routes = [
   {
@@ -27,6 +28,10 @@ export const routes = [
       {
         path: "/contact",
         element: <Contact/>,
+      },
+      {
+        path: "/faq",
+        element: <FAQ/>,
       },
     ],
   },

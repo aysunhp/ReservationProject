@@ -18,7 +18,7 @@ const Footer = () => {
     container">
     <Box sx={{ flexGrow: 1 }} style={{marginBottom:"50px"}}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+              <Grid item xs={12} sm={12} md={3} lg={3} xl={3} style={{paddingLeft:"20px"}}>
                 <h2>Support</h2>
                 <ul>
                   <li>Help Center</li>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </ul>
            
               </Grid>
-              <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+              <Grid item xs={12} sm={12} md={3} lg={3} xl={3} style={{paddingLeft:"20px"}}>
                 <h2>Company</h2>
                 <ul>
                   <li>About us</li>
@@ -38,7 +38,7 @@ const Footer = () => {
                   <li>Terms of service</li>
                 </ul>
               </Grid>
-              <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+              <Grid item xs={12} sm={12} md={3} lg={3} xl={3} style={{paddingLeft:"20px"}}>
                 <h2>Contact </h2>
                 <ul>
                   <li>Partnership</li>
@@ -46,7 +46,7 @@ const Footer = () => {
                   <li>Get in touch</li>
                 </ul>
               </Grid>
-              <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+              <Grid item xs={12} sm={12} md={3} lg={3} xl={3} style={{paddingLeft:"20px"}}>
                 <h2>Social</h2>
              
                 <div className="icons">
