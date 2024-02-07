@@ -1,5 +1,5 @@
 import "./storiesTips.scss";
-import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,9 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import {  Input } from 'antd';
-import { Button,  } from 'antd';
-// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 
 const StoriesTipsGuides = () => {
 

@@ -1,0 +1,74 @@
+@import "./../../../assets/styles/mixin/mixin.scss";
+@import "./../../../assets/styles/varibles/varibles.scss";
+@import "./../../../assets/styles/gridSystem/grid.scss";
+
+.contact-sect{
+    font-family: "Roboto";
+
+    .contact-hero {
+        width: 100%;
+        height: 400px;
+        background-color: #fff;
+        background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        // margin: 0px;
+        @include d-f(center, center);
+    
+        .containerr {
+            width: 70%;
+          position: relative;
+          padding: 50px 20px 0px 20px; 
+
+          h1 {
+            color: white;
+            font-size: 64px;
+            margin: 0px;
+            position: relative; 
+            z-index: 2;
+          }
+          .page-breadcrumb{
+          .breadcrumbs{
+            padding-left: 20px;
+            padding-right: 20px; 
+            margin: 0px auto;
+            position: relative; 
+            z-index: 2;
+            @include d-f(flex-start,center);
+            .page-name{
+                color: $basic-color;
+            }
+        }}
+        }
+    
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          opacity: 1; 
+        }
+      }
+  .contact-location{
+    width: 100%;
+    iframe{
+        width: 100%;
+    }
+  }
+
+}
+@media only screen and (max-width: 992px) {
+    .contact-sect {
+    .contact-hero{
+        .container {
+            h1{
+             font-size: 24px;
+            }
+           }
+    }  
+   }
+  }

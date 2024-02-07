@@ -8,6 +8,8 @@ import Settings from "../pages/userSettings/settings";
 import BookingHistory from "../pages/userSettings/bookingHistory";
 import Inbox from "../pages/userSettings/inbox";
 import Wishlist from "../pages/userSettings/wishlist";
+import About from "../pages/user/about";
+import Contact from "../pages/user/contact";
 
 export const routes = [
   {
@@ -17,7 +19,15 @@ export const routes = [
       {
         path: "/",
         element: <Home />,
-      }
+      },
+      {
+        path: "/about",
+        element: <About/>,
+      }, 
+      {
+        path: "/contact",
+        element: <Contact/>,
+      },
     ],
   },
   {

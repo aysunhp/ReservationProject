@@ -1,0 +1,187 @@
+@import "./../../../assets/styles/mixin/mixin.scss";
+@import "./../../../assets/styles/varibles/varibles.scss";
+@import "./../../../assets/styles/gridSystem/grid.scss";
+
+.about-sect{
+    font-family: "Roboto";
+
+    .about-hero {
+        width: 100%;
+        height: 400px;
+        background-color: #fff;
+        background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        // margin: 0px;
+        @include d-f(center, center);
+    
+        .containerr {
+            width: 70%;
+          position: relative;
+          padding: 0px 20px; 
+
+          h1 {
+            color: white;
+            font-size: 64px;
+            margin: 0px;
+            position: relative; 
+            z-index: 2;
+          }
+        }
+    
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          opacity: 1; 
+        }
+      }
+    .page-breadcrumb{
+width: 100%;
+        border-bottom: 1px solid #EAEEF3;
+    
+        .breadcrumbs{
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 70%;
+            margin: 0px auto;
+            @include d-f(flex-start,center);
+            .page-name{
+                color:#5e6d77;
+            }
+        }
+    }
+  .about-page-content{
+    padding-top: 70px;
+    .container {
+      
+        .video-player-wrapper{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            margin-bottom: 30px;
+            .video-bg-image{
+                width: 100%;
+                height: 500px;
+                background-color: red;
+                background-image:  url("https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/image-1.png");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 15px;
+            }
+        }
+
+        .about-page-text-content{
+            width: 80%;
+            h1{
+                font-size: 30px;
+                line-height: 36px;
+                margin-bottom: 18px;
+            }
+            p{     
+    font-size: 16px;
+    color: #727272;
+    font-weight: 400;
+    line-height: 26px;
+            }
+
+            .our-mission-sect{
+                margin: 0px;
+                margin-top: 30px;
+                width: 100%;
+               
+              
+                   .our-mission-left-sect{
+                    padding: 0px 50px 0px 0px;
+                   }
+                .our-mission-left-sect , .our-mission-right-sect{
+                    margin: 0px;
+                    text-align: left;
+                    h3{
+                        color: #232323;
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 30px;
+                        margin-bottom: 25px;
+                    }
+                    p{
+                        color: #727272;
+                        font-family: "DM Sans", Sans-serif;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 30px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+      }
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .about-sect {
+        .about-hero {
+            .containerr {
+              h1 {
+                font-size: 48px;
+              }
+             } 
+    }
+    .about-page-content{
+
+        width: 100%;
+        .container{
+            max-width: 100% !important;
+            
+        }
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+    .about-sect {
+        .about-hero {
+            .containerr {
+              width: 100%;
+              margin: 0px;
+             } 
+    }
+    .page-breadcrumb{
+        .breadcrumbs{
+            width: 100%;
+        }
+    }
+  }
+}
+@media only screen and (max-width: 576px) {
+    .about-sect {
+        
+    .page-breadcrumb{
+        display: none;
+       
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+    .about-sect {
+        .about-page-content{
+            .container{
+                .about-page-text-content{
+                   width: 100%;
+                   padding: 12px;
+                   h1{
+                    font-size: 24px;
+                   }
+                }
+            }
+        }
+    
+  }
+}

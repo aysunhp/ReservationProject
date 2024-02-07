@@ -1,0 +1,70 @@
+@import "./../../assets/styles/mixin/mixin.scss";
+@import "./../../assets/styles/varibles/varibles.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.what-clients-say-sect {
+  padding: 80px 0px;
+  background-color: #F7F8FA;;
+  .container {
+    padding: 10px;
+    h1 {
+      font-size: 36px;
+      line-height: 36px;
+      font-weight: 700;
+      color: $primary-color;
+      text-align: left;
+      margin-bottom: 70px;
+    }
+
+    .clients-reviews-wrapper{
+        .review-item{
+            padding: 20px;
+            width: 100%;
+text-align: center;
+            .review{
+                font-size: 14px;
+                color: #768092;
+                margin-bottom: 20px;
+            }
+            h4{
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 36px;
+              margin-bottom: 5px;
+                color: $primary-color;
+            }
+
+            .rating{
+               svg{
+                width: 18px;
+                height: 16px;
+                margin-right: 10px;
+               } 
+            }
+        }
+    }
+  }
+}
+.swiper-button-next{
+  display: none;
+}
+.swiper-button-prev{
+  display: none;
+}
+@media only screen and (max-width: 992px) {
+    .what-clients-say-sect {
+      .container {
+       h1{
+        font-size: 24px;
+       }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .what-clients-say-sect {
+      .container {
+      max-width: 100% ;
+      }
+    }
+  }
