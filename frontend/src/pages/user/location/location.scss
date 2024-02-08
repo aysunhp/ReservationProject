@@ -1,0 +1,170 @@
+@import "./../../../assets/styles/mixin/mixin.scss";
+@import "./../../../assets/styles/varibles/varibles.scss";
+@import "./../../../assets/styles/gridSystem/grid.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+.location-page{
+    background-color: #ffffff;
+    font-family: "Roboto";
+    .location-hero {
+      width: 100%;
+      height: 300px;
+      background-color: #fff;
+      background-image: url(https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/banner-search-form-min.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      // margin: 0px;
+      @include d-f(center, center);
+  
+      .container {
+        width: 70%;
+        position: relative;
+        padding: 50px 20px 0px 20px;
+  
+        h1 {
+          color: white;
+          font-size: 36px;
+          margin: 0px;
+          position: relative;
+          z-index: 2;
+        }
+        .page-breadcrumb {
+          .breadcrumbs {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0px auto;
+            position: relative;
+            z-index: 2;
+            @include d-f(flex-start, center);
+            .page-name {
+              color: $basic-color;
+            }
+          }
+        }
+      }
+  
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 1;
+      }
+    }
+    .stories-tips-guides{
+        background-color: #F7F8FA;
+
+    }
+    .subscribe-sect{
+        margin-top: 80px;
+    }
+
+    .recomended-location-title{
+        padding-top: 50px ;
+        .container{
+            padding: 10px;
+            h1 {
+              font-size: 36px;
+              font-weight: 700;
+              line-height: 46px;
+              text-align: center;
+              margin-bottom: 35px;
+            }
+        }
+    }
+    .recomended-section{
+        background-color: $basic-color;
+    }
+    .location-page-main-sect{
+        padding: 10px;
+       .location-page-main-inner-wrapper{
+        padding: 10px;
+        margin: 50px 0px;
+        .location-page-main-left-sect , .location-page-main-right-sect{
+            padding: 15px;
+
+            h1{
+                font-size: 26px;
+                font-weight: 700;
+                line-height: 36px;
+                margin-bottom: 20px;
+            }
+            p{
+                color: #727272;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 26px;
+                margin-bottom: 30px;
+            }
+        }
+       }
+    }
+    .location-page-info-images{
+        padding-top: 60px;
+    }
+}
+
+.MuiBreadcrumbs-root.MuiBreadcrumbs-sizeMd.breadcrumbs.css-ld9wxb-JoyBreadcrumbs-root {
+    padding: 0px !important;
+  }
+
+
+
+//   @media only screen and (max-width: 1400px) {
+//     .location-page {
+
+//     }
+//   }
+
+  @media only screen and (max-width: 1200px) {
+    .location-page {
+      .location-hero {
+        .container {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .location-page {
+      .location-hero {
+        height: 200px;
+        .container {
+          h1 {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .location-page {
+.location-page-main-sect{
+    .container{
+        max-width: 100%;
+    }
+}
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+    .location-page{
+
+        .recomended-title{
+            .container{
+         h1{
+          font-size: 27px;
+         }
+            }
+          }
+    }
+   
+     }

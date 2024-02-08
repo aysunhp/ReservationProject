@@ -12,6 +12,7 @@ import About from "../pages/user/about";
 import Contact from "../pages/user/contact";
 import FAQ from "../pages/user/faq";
 import BecomeLocalExpert from "../pages/user/localExpert";
+import Location from "../pages/user/location";
 
 export const routes = [
   {
@@ -37,6 +38,10 @@ export const routes = [
       {
         path: "/become-local-expert",
         element: <BecomeLocalExpert/>,
+      },
+      {
+        path: "/location",
+        element: <Location />
       },
     ],
   },

@@ -13,7 +13,6 @@ const RecomendedForYou = () => {
     <section className="recomended-section">
       <div className="container  
   container-lg container-xl  container-xxl">
-        <h1 >Recommended for you</h1>
         <ul>
           <li>Hotel</li>
           <li>Tour</li>
