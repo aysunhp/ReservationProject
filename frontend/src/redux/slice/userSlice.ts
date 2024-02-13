@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+// import type { PayloadAction } from '@reduxjs/toolkit'
 import axios from "axios"
 
 
@@ -57,14 +57,6 @@ export const postData = createAsyncThunk<User>("user/postData", async (obj) => {
     const response = await axios.post(`http://localhost:8000/users`, obj);
     return response.data;
 });
-// export const updateWishlist= createAsyncThunk<{id:string,item:string}>("user/updateWishlist", async (obj) => {
-//   console.log("obj", obj)
-//   const response = await axios.patch(`http://localhost:8000/users/`+obj.id, {
-//     wishlist: [ ...response.data.wishlist,obj.item],
-//   });
-//   console.log("data",response.data)
-//   return obj.item;
-// });
 export const updateWishlist = createAsyncThunk(
   "user/updateWishlist",
   async (obj: { id: string; item: string }) => {
@@ -74,7 +66,7 @@ export const updateWishlist = createAsyncThunk(
       const found = currentUserData.wishlist.find((item:string)=>item===obj.item);
 
       if(found){
-        const updatedWishlist =  currentUserData.wishlist.filter(item=>item!==obj.item);
+        const updatedWishlist =  currentUserData.wishlist.filter((item:string)=>item!==obj.item);
         await axios.patch(`http://localhost:8000/users/${obj.id}`, {
           wishlist: updatedWishlist,
         });

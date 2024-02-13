@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import SignUp from "../../components/signUp";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import type { RadioChangeEvent } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store/hotelStore";
 import { login } from "../../redux/slice/userSlice";
@@ -20,7 +19,7 @@ interface Props {
 const drawerWidth = 300;
 
 const Navbar = (props: Props) => {
-  const [value, setValue] = useState(1);
+  // const [value, setValue] = useState(1);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [loginType, setLoginType] = useState("signIn");
@@ -29,7 +28,7 @@ const Navbar = (props: Props) => {
   const [isBasketVisible, setBasketVisible] = useState(false);
   const dispatch=useDispatch<AppDispatch>()
   const isLogin=useSelector((state:RootState)=>state.user.isLogin)
-
+  const user= JSON.parse(localStorage.getItem("user") || "{}");
   const handleCancel = () => {
     setOpen(false);
   };
@@ -67,10 +66,10 @@ const Navbar = (props: Props) => {
 
 
   
-  const onChange = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
-    setValue(e.target.value);
-  };
+  // const onChange = (e: RadioChangeEvent) => {
+  //   console.log('radio checked', e.target.value);
+  //   setValue(e.target.value);
+  // };
 
 console.log("login",isLogin)
 
@@ -634,7 +633,7 @@ console.log("login",isLogin)
             <p>
               Hi,
               <br />
-              <span>aysnhp</span>
+              <span>{user?.userName}</span>
             </p>
           </li>
           <Link to="/account">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Form, Upload, Button } from "antd";
 import FormControl from "@mui/joy/FormControl";
@@ -24,6 +24,10 @@ import Checkbox from "@mui/material/Checkbox";
 import "./settings.scss";
 import "./../../../assets/styles/gridSystem/grid.scss";
 import { useNavigate } from "react-router-dom";
+import { fetchHotelData } from "../../../redux/slice/hotelSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store/hotelStore";
+import { login } from "../../../redux/slice/userSlice";
 const drawerWidth = 270;
 interface Props {
   window?: () => Window;
@@ -35,6 +39,10 @@ export default function Settings(props: Props) {
   const [isClosing, setIsClosing] = React.useState(false);
   const [disp, setDisp] = React.useState(true);
   const [uploadedImage, setUploadedImage] = useState(null);
+  const dispatch=useDispatch<AppDispatch>()
+
+  const user=JSON.parse(localStorage.getItem("user") || "{}")
+  const navigate = useNavigate();
 
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -69,7 +77,6 @@ export default function Settings(props: Props) {
   // };
 
   const [checked, setChecked] = React.useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
@@ -94,9 +101,11 @@ export default function Settings(props: Props) {
   const handleDisp = () => {
     setDisp(!disp);
   };
-  console.log("mobileOpen", mobileOpen);
-  console.log("isClosing", isClosing);
-  console.log("disp", disp);
+
+  useEffect(() => {
+    dispatch(fetchHotelData());
+  }, [dispatch]);
+
 
   const drawer = (
     <div style={{ margin: "0px", backgroundColor: "#1A2B48" }}>
@@ -140,12 +149,12 @@ export default function Settings(props: Props) {
         <div className="accout-info">
           <div className="account-prof-img">
             <img
-              src="	https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg"
+              src={user.userImage}
               alt="account-profile"
             />
           </div>
           <div className="account-name">
-            <p>aysunhp</p>
+            <p>{user.userName}</p>
             <p>
               Since: <span>Jan 2024</span>{" "}
             </p>
@@ -194,7 +203,7 @@ export default function Settings(props: Props) {
                 <ListItemText
                   primary={text}
                   style={{
-                    color: index === 0 ? "#3B71FE" : "#a0a9b2",
+                    color: index === 2 ? "#3B71FE" : "#a0a9b2",
                     fontSize: "14px",
                   }}
                 />
@@ -211,7 +220,9 @@ export default function Settings(props: Props) {
             disablePadding
             style={{ color: "#a0a9b2" }}
             onClick={() => {
-              console.log("Cliced");
+          dispatch(login(false));
+          localStorage.removeItem("user")
+          navigate("/")
             }}
           >
             <ListItemButton>
@@ -322,13 +333,13 @@ export default function Settings(props: Props) {
                 <FormControl>
                   <div className="username-input">
                     <FormLabel>Username</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.userName:""} />
                   </div>
                 </FormControl>
                 <FormControl>
                   <div className="pEmail-input">
                     <FormLabel>Paypay Email</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.paypalEmail:""} />
                   </div>
                 </FormControl>
               </div>
@@ -336,20 +347,20 @@ export default function Settings(props: Props) {
                 <FormControl>
                   <div className="email-input">
                     <FormLabel> Email</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.email:""}/>
                   </div>
                 </FormControl>
                 <FormControl>
                   <div className="phone-input">
                     <FormLabel>Phone</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.phone:""} />
                   </div>
                 </FormControl>
               </div>
               <div className="form-third-sect col-12 col-sm-12 col-md-12 col-lg-4">
                 <FormControl>
                   <FormLabel>About yourself</FormLabel>
-                  <Textarea defaultValue="react-bootstrap" minRows={2} />
+                  <Textarea defaultValue={user?user?.userInfo:""} minRows={2} />
                 </FormControl>
               </div>
               <div className="form-fourth-sect col-12">
@@ -370,7 +381,7 @@ export default function Settings(props: Props) {
                 <div className="account-image-wrapper col-12  col-sm-12 col-md-12 col-lg-4 col-xl-3 row">
                   <div className="account-img col-6">
                     <img
-                      src="https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg"
+                      src={user?user?.userImage:""}
                       alt=""
                     />
                   </div>
@@ -402,13 +413,13 @@ export default function Settings(props: Props) {
                 <FormControl>
                   <div className="hAirport-input">
                     <FormLabel>Home Airport</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.homeAirport:""} />
                   </div>
                 </FormControl>
                 <FormControl>
                   <div className="region-input">
                     <FormLabel>State/Province/Region</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.state:""} />
                   </div>
                 </FormControl>
               </div>
@@ -416,13 +427,13 @@ export default function Settings(props: Props) {
                 <FormControl>
                   <div className="address-input">
                     <FormLabel> Address</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.address:""} />
                   </div>
                 </FormControl>
                 <FormControl>
                   <div className="zipCode-input">
                     <FormLabel>ZIP code/Postal code</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.zipCode:""} />
                   </div>
                 </FormControl>
               </div>
@@ -430,13 +441,13 @@ export default function Settings(props: Props) {
                 <FormControl>
                   <div className="city-input">
                     <FormLabel> City</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.city:""} />
                   </div>
                 </FormControl>
                 <FormControl>
                   <div className="country-input">
                     <FormLabel>Country</FormLabel>
-                    <Input defaultValue="react-bootstrap" />
+                    <Input defaultValue={user?user?.location?.country:""} />
                   </div>
                 </FormControl>
               </div>

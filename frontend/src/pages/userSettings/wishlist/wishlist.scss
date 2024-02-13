@@ -104,6 +104,7 @@ padding: 10px 0px 3px 0px;
     .wishlist-card{
         border: 1px solid lightgray;
         position: relative;
+        margin-bottom: 25px;
       .delete-btn{
         width: 26px;
         height: 26px;
@@ -127,6 +128,7 @@ padding: 10px 0px 3px 0px;
                 height: 100%;
                 overflow: hidden;
                 object-fit: cover;
+                margin-bottom: -5px;
             }
         }
           
@@ -159,6 +161,9 @@ padding: 10px 0px 3px 0px;
                         color: #5E6D77;
                         font-size: 14px;
                         line-height: 28px;
+                        @include d-f(flex-start, center);
+                        flex-wrap: wrap;
+
 
                     }
                    

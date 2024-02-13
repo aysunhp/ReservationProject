@@ -24,7 +24,6 @@ const RecomendedForYou = () => {
   const hotels=useSelector((state:RootState)=>state.hotel.hotels)
   const wishlist=useSelector((state:RootState)=>state.user.wishlist)
   const isLogin=useSelector((state:RootState)=>state.user.isLogin)
-
   const user=JSON.parse(localStorage.getItem("user") || "{}")
 
 
@@ -78,14 +77,14 @@ console.log("wishlist", wishlist)
       <Grid container spacing={3}>
       {
         displayedHotels && displayedHotels.map(item=>{
-          return   <Grid key={item._id}  className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" >
+          return   <Grid key={item?._id}  className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" >
           <Card sx={{ width: "100%" }}  style={{borderRadius:"15px"}}>
         <CardActionArea className="card-action-area">
         <div className="hover-scale-image-container">
             <CardMedia
               component="img"
               height="280"
-              image={item.hotelImg}
+              image={item?.hotelImg}
               alt="hotel"
               className="hover-scale-image"
             />

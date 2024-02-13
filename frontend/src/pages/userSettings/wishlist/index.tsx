@@ -19,6 +19,11 @@ import { useNavigate } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import CloseIcon from '@mui/icons-material/Close';
 import "./../../../assets/styles/gridSystem/grid.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../redux/store/hotelStore";
+import { fetchHotelData } from "../../../redux/slice/hotelSlice";
+import { fetchUserById, login, updateWishlist } from "../../../redux/slice/userSlice";
+import { useEffect } from "react";
 
 const drawerWidth = 270;
 interface Props {
@@ -33,9 +38,12 @@ export default function Wishlist(props: Props) {
   const [isClosing, setIsClosing] = React.useState(false);
   const [disp, setDisp] = React.useState(true);
   const [state,setState]=React.useState("hotel") 
+  const dispatch=useDispatch<AppDispatch>()
 
 
-
+  const hotels=useSelector((state:RootState)=>state.hotel.hotels)
+  const wishlist=useSelector((state:RootState)=>state.user.wishlist)
+  const user=JSON.parse(localStorage.getItem("user") || "{}")
   const navigate = useNavigate();
 
   const handleDrawerClose = () => {
@@ -57,10 +65,26 @@ export default function Wishlist(props: Props) {
   const handleDisp = () => {
     setDisp(!disp);
   };
-  console.log("mobileOpen", mobileOpen);
-  console.log("isClosing", isClosing);
-  console.log("disp", disp);
 
+ useEffect(() => {
+    dispatch(fetchHotelData());
+  dispatch(fetchUserById(user._id))
+  }, [dispatch]);
+
+  const wishlistItems = wishlist.map(itemId =>
+    hotels.find(hotel => hotel._id === itemId)
+  ); 
+
+  const wishlistHandle = (id:string )=>{
+    let obj:{
+     id:string,
+     item:string
+    }={
+       id:user._id,
+       item:id
+     }
+     dispatch(updateWishlist(obj))
+    }
   const drawer = (
     <div style={{ margin: "0px", backgroundColor: "#1A2B48" }}>
       <Toolbar style={{ padding: "30px" }}>
@@ -103,12 +127,12 @@ export default function Wishlist(props: Props) {
         <div className="accout-info">
           <div className="account-prof-img">
             <img
-              src="	https://modmixmap.travelerwp.com/wp-content/uploads/2024/01/dfd580a23b65dc9e6cd9bf2d681303b7.jpg"
+              src={user.userImage}
               alt="account-profile"
             />
           </div>
           <div className="account-name">
-            <p>aysunhp</p>
+            <p>{user.userName}</p>
             <p>
               Since: <span>Jan 2024</span>{" "}
             </p>
@@ -174,7 +198,9 @@ export default function Wishlist(props: Props) {
             disablePadding
             style={{ color: "#a0a9b2" }}
             onClick={() => {
-              console.log("Cliced");
+          dispatch(login(false));
+          localStorage.removeItem("user")
+          navigate("/")
             }}
           >
             <ListItemButton>
@@ -340,108 +366,219 @@ export default function Wishlist(props: Props) {
           <Box sx={{ width: "100%" }} style={{ padding: "0px", paddingRight:"20px" }}>
          
         {
-          state==="hotel"? <div className="wishlist-card ">
+          state==="hotel"? <>
+          {
+            wishlistItems?wishlistItems.map(item=>{
+              return <div className="wishlist-card " key={item?._id}>
                
-          <div className="wishlist-card-row row ">
-           
-            <div className="wishlist-card-img col-xl-3 large col-md-12 col-sm-12  col-xs-12">
-              <img
-                src="	https://modmixmap.travelerwp.com/wp-content/uploads/2022/04/feature-12-450x417.png"
-                alt=""
-              />
-            </div>
-          
-              <div className="content-left-sect col-xl-5 large col-md-12 col-sm-12  col-xs-12">
-                <div className="upper">
-                  <div className="star-rate">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                        fill="#FA5636"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                        fill="#FA5636"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                        fill="#FA5636"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                        fill="#FA5636"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 576 512"
-                    >
-                      <path
-                        d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
-                        fill="#FA5636"
-                      />
-                    </svg>
-                  </div>
-                  <h2 className="name">Name</h2>
-                  <p className="facilities">romanticy</p>
-                </div>
-                <p className="location">
-                  <PlaceIcon
-                    style={{ color: "#5E6D77", fontSize: "16px" }}
+              <div className="wishlist-card-row row ">
+               
+                <div className="wishlist-card-img col-xl-3 large col-md-12 col-sm-12  col-xs-12">
+                  <img
+                    src={item?.hotelImg}
+                    alt=""
                   />
-                  Location
-                </p>
-              </div>
-              <div className="content-right-sect col-xl-4 large col-md-12 col-sm-12  col-xs-12">
-                <div className="upper">
-                 <div className="rating-left">
-                 <div className="text-rating">Excellent</div>
-                  <div className="review">
-                    <span>3</span> Reviews
-                  </div>
-                 </div>
-                 <div className="rating-right">
-                 <span className="rating">
-                    5/ <small>5</small>
-                  </span>
-                 </div>
-                  <span className="mobile-rating">
-                    5/ <span>5</span> <span>Excellent</span>
-                  </span>
                 </div>
-                <p>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z" fill="#FFAB53"/></svg>
-                  From:{" "}
-                
-                    <span>$159,00</span>
-                 
-                  /night
-                </p>
+              
+                  <div className="content-left-sect col-xl-5 large col-md-12 col-sm-12  col-xs-12">
+                    <div className="upper">
+                      <div className="star-rate">
+                        {
+                          item?.rate==="5"?<>
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                          </>:item?.rate==="4"?<>
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                          </>:item?.rate==="3"?<>
+                          <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                          </>:item?.rate==="2"?<>
+                          
+                       
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                        </svg>
+                          </>:  
+                           <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 576 512"
+                        >
+                          <path
+                            d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                            fill="#FA5636"
+                          />
+                          </svg>
+                        }
+                      </div>
+                      <h2 className="name">{item?.name}</h2>
+                      <p className="facilities">
+                        {
+                          item?.facilities.slice(0,3).join(', ')
+                        }
+                      </p>
+                    </div>
+                    <p className="location">
+                      <PlaceIcon
+                        style={{ color: "#5E6D77", fontSize: "16px" }}
+                      />
+                      {item?.locationcity}
+                    </p>
+                  </div>
+                  <div className="content-right-sect col-xl-4 large col-md-12 col-sm-12  col-xs-12">
+                    <div className="upper">
+                     <div className="rating-left">
+                     <div className="text-rating">Excellent</div>
+                      <div className="review">
+                        <span>{item?.review?item?.review.length:0}</span> Reviews
+                      </div>
+                     </div>
+                     <div className="rating-right">
+                     <span className="rating">
+                        5/ <small>5</small>
+                      </span>
+                     </div>
+                      <span className="mobile-rating">
+                        5/ <span>5</span> <span>Excellent</span>
+                      </span>
+                    </div>
+                    <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z" fill="#FFAB53"/></svg>
+                      From:{" "}
+                    
+                        <span>${item?.price},00</span>
+                     
+                      /night
+                    </p>
+                  </div>
+              
               </div>
-          
-          </div>
-          <div className="delete-btn">
-              <CloseIcon style={{color:"white" , fontSize:"16px" ,fontWeight:"bold"}}/>
-              </div>
-        </div>:state==="tour"? <h1>No Wishlist</h1>:state==="activity"? <h1>No Wishlist</h1>:state==="rental"? <h1>No Wishlist</h1>:state==="car"? <h1>No Wishlist</h1>:null
+              <div className="delete-btn" onClick={()=>{
+                wishlistHandle(item._id)
+              }}>
+                  <CloseIcon style={{color:"white" , fontSize:"16px" ,fontWeight:"bold"}}/>
+                  </div>
+            </div>
+            }):<h1>No Wishlist</h1>
+          }
+          </>:state==="tour"? <h1>No Wishlist</h1>:state==="activity"? <h1>No Wishlist</h1>:state==="rental"? <h1>No Wishlist</h1>:state==="car"? <h1>No Wishlist</h1>:null
         }
             </Box>
        
