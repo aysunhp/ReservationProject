@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import SignUp from "../../components/signUp";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
+import type { RadioChangeEvent } from 'antd';
+import { Radio } from 'antd';
 
 interface Props {
   window?: () => Window;
@@ -16,6 +18,7 @@ interface Props {
 const drawerWidth = 300;
 
 const Navbar = (props: Props) => {
+  const [value, setValue] = useState(1);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [loginType, setLoginType] = useState("signIn");
@@ -55,6 +58,13 @@ const Navbar = (props: Props) => {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+
+  
+  const onChange = (e: RadioChangeEvent) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
   };
 
   const drawer = (

@@ -146,6 +146,10 @@
 
     }
   }
+  .pagination-wrapper{
+    @include d-f(center,center);
+    margin-top: 40px;
+  }
 }
 
 

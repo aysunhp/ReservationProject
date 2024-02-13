@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 
 
 const login = async (req, res) => {
+  
     const user = req.body;
     try {
       let findUser = await User.findOne({ userName: user.userName });
@@ -61,27 +62,27 @@ const getPutUser = async (req, res) => {
 };
 
 const postUser = async (req, res) => {
-  // try {
-  //   let found = await User.findOne({
-  //       userName: req.body.userName,
-  //      email: req.body.email,
+  try {
+    let found = await User.findOne({
+        userName: req.body.userName,
+       email: req.body.email,
 
-  //   });
+    });
 
-    // if (found) {
-    //   res.status(201).send("This email or username is exist");
-    // }else {
+    if (found) {
+      res.status(201).send("This email or username is exist");
+    }else {
       const newUser = new User(req.body);
       newUser.save();
       res.send(newUser);
-      // res.status(200).send({ message: "User registered successfully" });
-    // }
-  // } catch {
-  //   (err) => {
-  //     console.log(err);
-  //     return err;
-  //   };
-  // }
+      res.status(200).send({ message: "User registered successfully" });
+    }
+  } catch {
+    (err) => {
+      console.log(err);
+      return err;
+    };
+  }
 };
 
 module.exports = {

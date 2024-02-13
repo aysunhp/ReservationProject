@@ -9,7 +9,7 @@
     width: 100%;
     z-index: 31;
     .containerr{
-        padding: 0px 30px 40px 30px;
+        padding: 0px 30px 30px 30px;
        width: 100%;
 h1{
     margin: 20px 0px 30px 0px;
@@ -17,6 +17,16 @@ h1{
 .inp{
     margin-bottom: 20px;
     padding: 10px 16px;
+}
+.ant-radio-group.ant-radio-group-outline.css-dev-only-do-not-override-1b0bdye{
+    margin-bottom: 15px;
+ 
+}
+.inp-label{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #5E6D77;
 }
 .login-btn{
     width: 100%;
@@ -48,6 +58,34 @@ h1{
     }
 }
 
+.sign-up-error{
+    width: 100%;
+    background-color: #f8d7da;
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-top: 18px;
+    display: none;
+p{
+    color: rgb(99, 16, 16);
+    font-size: 15px;
+    text-align: center;
+}
+}
+
+
+.sign-up-succes{
+    width: 100%;
+    background-color: #d1eddd;
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-top: 18px;
+    display: none;
+p{
+    color: #203329;
+    font-size: 15px;
+    text-align: center;
+}
+}
 }
 
 

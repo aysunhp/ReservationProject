@@ -1,11 +1,19 @@
 const mongoose=require("mongoose")
 
 const userSchema= mongoose.Schema({
-name:String,
+    email: String,
+fullName:String,
+isPartner:Boolean,
+location:Object,
+password:String,
+paypayEmail:String,
+phone:String,
+userInfo:String,
 userName:String,
-userImage: Object,
+userImage:String,
+wishlist:Array,
 },{
-    collection:"users", timestamps: false 
+    collection:"users", timestamps: true 
 })
 
 const User=mongoose.model("users",userSchema)

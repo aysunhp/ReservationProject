@@ -26,6 +26,37 @@ h1{
     margin-bottom: 20px;
     margin-top: 5px;
 }
+.sign-in-error{
+    width: 100%;
+    background-color: #f8d7da;
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: none;
+p{
+    color: rgb(107, 22, 22);
+    font-size: 15px;
+    text-align: center;
+    span{
+        font-weight: 700;
+    }
+}
+}
+
+.sign-up-succes{
+    width: 100%;
+    background-color: #d1eddd;
+    padding: 9px 15px;
+    border-radius: 5px;
+    margin-top: 18px;
+    display: none;
+p{
+    color: #203329;
+    font-size: 15px;
+    text-align: center;
+}
+}
 .login-footer{
     @include d-f(space-between,center);
     p{
