@@ -1,26 +1,36 @@
 const User = require("./../model/userModel");
 const jwt = require("jsonwebtoken");
 
+const refTokens=[]
 
 const login = async (req, res) => {
-  
     const user = req.body;
+
+   
     try {
-      let findUser = await User.findOne({ userName: user.userName });
+      let findUser = await User.findOne({  userName:user.userName});
   
       if (findUser) {
+       
         const token = jwt.sign(
           { password: user.password, userName: user.userName },
-          process.env.SECRET_TOKEN,
+          process.env.SECRET_TOKEN
+          ,
           {
-            expiresIn: "400s",
+            expiresIn: "10s",
           }
         );
-        console.log("token", token);
+
+        const refToken = jwt.sign(
+          { password: user.password, userName: user.userName },
+          process.env.REFRESH_TOKEN
+        );
+        refTokens.push(refToken)
   
-        return res.status(200).send(token);
+        console.log("tokenlerrrrrr", refTokens)
+        return res.status(200).send({token, refToken});
       } else {
-        return res.status(201).send("duzgun email daxil edin");
+        return res.status(201).send("dogru istifadeci adi ve ya sifre daxil edin");
       }
     } catch {
       (err) => {
@@ -93,4 +103,5 @@ module.exports = {
   getPutUser,
   postUser,
   login,
+  refTokens,
 };

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store/hotelStore";
 import { fetchData , login} from "../../redux/slice/userSlice";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -24,6 +25,7 @@ const SignIN = () => {
     const [rememberMe, setRememberMe]=useState(false)
       const users = useSelector((state: RootState) => state.user.users);
       const dispatch = useDispatch<AppDispatch>();
+      const navigate=useNavigate()
 
       const showModal = () => {
         setOpen(true);
@@ -50,13 +52,14 @@ const SignIN = () => {
         console.log(found)
         axios.post("http://localhost:8000/login/", user).then((res) => {
           console.log(res.data);
-          localStorage.setItem("token", res.data);
-
+         localStorage.setItem("user",JSON.stringify(found))
+          localStorage.setItem("token", JSON.stringify(res.data));
           dispatch(login(true));
           setDisplay(true);
           setTimeout(() => {
             setDisplay(false);
           }, 3800);
+          navigate("/")
         });
 
        }else{

@@ -1,6 +1,6 @@
 const router= require("express").Router()
 const hotelControllers= require("./../controllers/hotelControllers")
-
+const userAuth= require("./../middlewares/userAuthMiddle")
 
 router.get("/",hotelControllers.getAllData)
 router.get("/:id",hotelControllers.getDataById)

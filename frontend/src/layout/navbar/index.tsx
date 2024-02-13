@@ -9,7 +9,9 @@ import SignUp from "../../components/signUp";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import type { RadioChangeEvent } from 'antd';
-import { Radio } from 'antd';
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store/hotelStore";
+import { login } from "../../redux/slice/userSlice";
 
 interface Props {
   window?: () => Window;
@@ -25,6 +27,9 @@ const Navbar = (props: Props) => {
   const [isVisible, setVisible] = useState("");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isBasketVisible, setBasketVisible] = useState(false);
+  const dispatch=useDispatch<AppDispatch>()
+  const isLogin=useSelector((state:RootState)=>state.user.isLogin)
+
   const handleCancel = () => {
     setOpen(false);
   };
@@ -66,6 +71,8 @@ const Navbar = (props: Props) => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
+
+console.log("login",isLogin)
 
   const drawer = (
     <Box className="mobile-nav-wrapper">
@@ -575,7 +582,7 @@ const Navbar = (props: Props) => {
               <li>
                 <button
                   onClick={() => {
-                    JSON.parse(localStorage.getItem("user"))
+                   isLogin
                       ? setDropdownVisible(true)
                       : setOpen(true);
                   }}
@@ -640,7 +647,7 @@ const Navbar = (props: Props) => {
           <li
             className="log-out"
             onClick={() => {
-              localStorage.removeItem("user");
+             dispatch(login(false))
             }}
           >
             Log out

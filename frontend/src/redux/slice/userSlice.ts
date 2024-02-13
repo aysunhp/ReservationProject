@@ -39,7 +39,7 @@ const initialState: userState = {
   wishlist:[],
   status: "loading",
   error :null,
-  isLogin:false,
+  isLogin:true,
 }
 
 
@@ -49,17 +49,50 @@ export const fetchData = createAsyncThunk<User[]>("user/fetchData", async () => 
     return response.data;
   });
 
+  export const fetchUserById = createAsyncThunk<string>("user/fetchUserById", async (id) => {
+    const response = await axios.get(`http://localhost:8000/users/`+id);
+    return response.data;
+  });
 export const postData = createAsyncThunk<User>("user/postData", async (obj) => {
     const response = await axios.post(`http://localhost:8000/users`, obj);
     return response.data;
 });
-export const updateWishlist= createAsyncThunk<{id:string,item:string}>("user/updateWishlist", async (obj) => {
-  const response = await axios.patch(`http://localhost:8000/users/`+obj.id, {
-    wishlist:obj.item
-  });
-  return response.data;
-});
+// export const updateWishlist= createAsyncThunk<{id:string,item:string}>("user/updateWishlist", async (obj) => {
+//   console.log("obj", obj)
+//   const response = await axios.patch(`http://localhost:8000/users/`+obj.id, {
+//     wishlist: [ ...response.data.wishlist,obj.item],
+//   });
+//   console.log("data",response.data)
+//   return obj.item;
+// });
+export const updateWishlist = createAsyncThunk(
+  "user/updateWishlist",
+  async (obj: { id: string; item: string }) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/users/${obj.id}`);
+      const currentUserData = response.data;
+      const found = currentUserData.wishlist.find((item:string)=>item===obj.item);
 
+      if(found){
+        const updatedWishlist =  currentUserData.wishlist.filter(item=>item!==obj.item);
+        await axios.patch(`http://localhost:8000/users/${obj.id}`, {
+          wishlist: updatedWishlist,
+        });
+
+        return updatedWishlist;
+      }else{
+        const updatedWishlist = [...currentUserData.wishlist, obj.item];
+        await axios.patch(`http://localhost:8000/users/${obj.id}`, {
+          wishlist: updatedWishlist,
+        });
+
+        return updatedWishlist;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+);
 
 export const userSlice = createSlice({
   name: 'user',
@@ -68,19 +101,6 @@ export const userSlice = createSlice({
     login: (state, action) => {
       state.isLogin = action.payload;
     },
-    addWishlist: (state, action: PayloadAction<string>) => {
-      let found = state.wishlist.find((item) => item === action.payload);
-      if (found) {
-        state.wishlist = current(state.wishlist).filter(
-          (item) => item !== action.payload
-        );
-      } else {
-        state.wishlist = [...current(state.wishlist), action.payload];
-      }
-
-      console.log(state.wishlist);
-    },
-
   },
   extraReducers: (builder) => {
     builder
@@ -92,6 +112,19 @@ export const userSlice = createSlice({
         state.users = action.payload;
       })
       .addCase(fetchData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+      builder
+      .addCase(fetchUserById.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUserById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        console.log("action", action.payload)
+        state.wishlist = action.payload.wishlist;
+      })
+      .addCase(fetchUserById.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
@@ -110,19 +143,23 @@ export const userSlice = createSlice({
       builder
       .addCase(updateWishlist.pending, (state) => {
         state.status = "loading";
+        console.log("loading")
       })
       .addCase(updateWishlist.fulfilled, (state, action) => {
-        state.status = "succeeded";``
-        state.wishlist = [...state.wishlist, action.payload.item];
+        state.status = "succeeded";
+        console.log("updated action", action.payload)
+        state.wishlist = action.payload;
+        console.log("succedd")
       })
       .addCase(updateWishlist.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        console.log("failed")
+
       });
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { addWishlist, login } = userSlice.actions
+export const {  login } = userSlice.actions
 
 export default userSlice.reducer

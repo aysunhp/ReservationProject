@@ -47,7 +47,13 @@ const initialState: hotelState = {
 
 
 export const fetchHotelData = createAsyncThunk<Hotel[]>("hotel/fetchHotelData", async () => {
-    const response = await axios.get(`http://localhost:8000/hotels`);
+  const token=JSON.parse(localStorage.getItem("token") || "{}")
+    const response = await axios.get(`http://localhost:8000/hotels`,{
+      headers: {
+        Authorization : `barear ${token.token}`,
+        RefreshToken : `barear ${token.refToken}`
+      }
+    });
     return response.data;
   });
 
