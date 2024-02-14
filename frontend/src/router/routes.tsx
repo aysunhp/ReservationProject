@@ -13,6 +13,7 @@ import Contact from "../pages/user/contact";
 import FAQ from "../pages/user/faq";
 import BecomeLocalExpert from "../pages/user/localExpert";
 import Location from "../pages/user/location";
+import HotelDetail from "../pages/user/hotelDetail";
 
 export const routes = [
   {
@@ -42,6 +43,10 @@ export const routes = [
       {
         path: "/location",
         element: <Location />
+      },
+      {
+        path: "/location/hotel",
+        element: <HotelDetail/>
       },
     ],
   },
