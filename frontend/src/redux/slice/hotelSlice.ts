@@ -19,15 +19,15 @@ export interface Review{
 }
 
 export interface Hotel{
-  _id:String,
-  name:String,
-  facilities:String[],
-  hotelImages:String[],
-  hotelImg:String,
-  locationcity:String,
-  partnerName:String,
-  price:String,
-  rate:String,
+  _id:string,
+  name:string,
+  facilities:string[],
+  hotelImages:string[],
+  hotelImg:string,
+  locationcity:string,
+  partnerName:string,
+  price:string,
+  rate:string,
   review:Review[]
 }
 

@@ -14,6 +14,7 @@ import FAQ from "../pages/user/faq";
 import BecomeLocalExpert from "../pages/user/localExpert";
 import Location from "../pages/user/location";
 import HotelDetail from "../pages/user/hotelDetail";
+import RoomDetail from "../pages/user/roomDetail";
 
 export const routes = [
   {
@@ -45,8 +46,12 @@ export const routes = [
         element: <Location />
       },
       {
-        path: "/location/hotel",
+        path: "/location/:id",
         element: <HotelDetail/>
+      },
+      {
+        path: "/location/:id/:idR",
+        element: <RoomDetail/>
       },
     ],
   },

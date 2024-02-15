@@ -11,6 +11,8 @@ export interface RoomDetail{
     nightPrice:number,
     roomImg:string,
     roomImages:string,
+    roomId:string,
+
 }
 
 export interface Room{
@@ -18,8 +20,7 @@ export interface Room{
   id:string,
   hotelName:string,
   cityName:string,
-  roomImages:string[],
- room: RoomDetail[]
+  room: RoomDetail[]
 }
 
 

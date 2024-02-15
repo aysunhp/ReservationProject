@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { AppDispatch, RootState } from "../../redux/store/hotelStore";
 import { fetchHotelData } from "../../redux/slice/hotelSlice";
 import { fetchUserById, updateWishlist } from "../../redux/slice/userSlice";
-
+import {Link} from "react-router-dom";
 const RecomendedForYou = () => {
   const [current, setCurrent] = useState(1);
   const dispatch = useDispatch<AppDispatch>();
@@ -283,7 +283,7 @@ const RecomendedForYou = () => {
                                   </svg>
                                 )}
                               </div>
-                              <h3 className="name">{item.name}</h3>
+                            <Link to={"/location/"+item._id}>  <h3 className="name">{item.name}</h3></Link>
                               <p className="location">{item.locationcity}</p>
                               <div className="line"></div>
                               <div className="review-wrapper">
